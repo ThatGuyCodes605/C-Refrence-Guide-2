@@ -128,6 +128,17 @@ int main(void) {
     }
     //this is bad because it will check all three conditions even if the first one is true, which is inefficient. The correct way to write this would be to use else if statements, as shown in the previous example, which will only check the next condition if the previous one is false.
 
+    c = get_char("Do you agree? (y/n) "); //prompts the user to enter a character and stores it in the preexisting variable "c" this is from cs50.h, it will read a single character from the user and return it as a char. The function get_char is part of the CS50 library and is used to read a single character from the user.
+    if (c == 'y' || c == 'Y') {
+        printf("You agreed!\n");
+    }
+    else if (c == 'n' || c == 'N') {
+        printf("You disagreed!\n");
+    }
+    else {
+        printf("Invalid input!\n");
+    }
+
 
 
     return 0; //returns 0 to indicate that the program ended successfully
