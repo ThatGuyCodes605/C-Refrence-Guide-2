@@ -1,5 +1,6 @@
 #include <stdio.h> //standard input/output library, which provides functions for reading and writing data to the console and files
 #include <cs50.h> //CS50 library, which provides additional functions for working with strings, files, and other data types
+int get_n(void); //function prototype for the function "get_n", which will be defined later in the code. This allows us to call the function "get_n" from the main function before its actual definition, which can improve code organization and readability.
 void meow(int n) {
     //this is a function declaration for a function called "meow" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Meow!" to the console.
     for (int i = 0; i < n; i++) { //this is a for loop that will execute the block of code inside the curly braces {} a specific number of times. In this case, it will initialize "i" to 0, check if "i < n" is true, and if so, it will execute the block of code and then increment "i" by 1. This process will repeat until "i" is no longer less than "n".
@@ -159,7 +160,7 @@ int main(void) {
     for (i = 0; i < 3; i++) { //this is a for loop that will execute the block of code inside the curly braces {} a specific number of times. In this case, it will initialize "i" to 0, check if "i < 3" is true, and if so, it will execute the block of code and then increment "i" by 1. This process will repeat until "i" is no longer less than 3.
         printf("%d\n", i); //prints the current value of "i" to the console
     }
-    int n; //n is in the the scope of the main function, which means that it can be accessed and modified by any code within the main function. This variable "n" will be used to store the number of times the user wants to repeat a certain action, which will be determined by the user's input.
+    int n; //n is in the scope of the main function, which means that it can be accessed and modified by any code within the main function. This variable "n" will be used to store the number of times the user wants to repeat a certain action, which will be determined by the user's input.
     while (true) { //this is a bad example of a loop a better one in this case would be to use a do-while loop, which will execute the block of code at least once and then check the condition at the end of the loop. This way, you can ensure that the user is prompted for input at least once and that the loop will continue to execute until a valid input is received.
         n = get_int("How many times? "); //prompts the user to enter an integer and stores it in the variable "n"
         //our own error handling: this is a while loop that will continue to execute indefinitely until the user enters a valid input for "n". Inside the loop, it prompts the user to enter an integer and stores it in the variable "n". Then, it checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to the next part of the code, which is a for loop that will print the numbers from 0 to n-1.
@@ -168,7 +169,9 @@ int main(void) {
             continue; //this continues the loop, prompting the user to enter a new value for "n"
         }
         else {
-
+            for (int i = 0; i < n; i++) {
+                printf("%d\n", i); //this prints the current value of "i" to the console, which will be from 0 to n-1)
+            }
             break; //this breaks out of the while loop if the user entered a valid value for "n" (greater than 0)
         }
     }
@@ -195,10 +198,31 @@ int main(void) {
     }
     else {
         meow(number); //this calls the function "meow" with the argument "number", which will execute the code inside the function body and print "Meow!" to the console "number" times.
+    } //we can replace this block of code with a function that handles the input validation and the call to the "meow" function, like this:
+    {
+        int n = get_n(); //this calls the function "get_n", which will prompt the user to enter a positive integer and return it as "n". The function "get_n" will handle the input validation and ensure that the user enters a valid positive integer before returning the value of "n".
+        meow(n); //this calls the function "meow" with the argument "n", which will execute the code inside the function body and print "Meow!" to the console "n" times.
     }
     hello(); //see line 7 and 195 for the function declaration and definition of "hello". This line calls the function "hello", which will execute the code inside the function body and print "Hello" to the console.
+    //======== CLEAN CODE ========
+    //clean code is code that is easy to read, understand, and maintain. It follows best practices and coding conventions, such as using meaningful variable names, organizing code into functions, and avoiding unnecessary complexity. Clean code is important because it makes it easier for other developers (or yourself in the future) to understand and work with the code, which can save time and reduce the likelihood of bugs. Some principles of clean code include:
+    //1. Use meaningful variable and function names that clearly indicate their purpose and functionality.
+    //2. Keep functions small and focused on a single task.
+    //3. Avoid code duplication by reusing functions and creating helper functions when necessary.
+    //4. Use comments to explain the purpose and functionality of code, but avoid over-commenting or stating the obvious.
+    //5. Follow consistent coding style and formatting conventions to improve readability
     return 0; //returns 0 to indicate that the program ended successfully
 }
 void hello(void) { //this is a function declaration for a function called "hello" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Hello, world!" to the console.
     printf("Hello, world!\n"); //this prints "Hello, world!" to the console followed by a newline character
+}
+int get_n(void) {
+    int n; //this declares an integer variable called "n" that will be used to store the number of times the user wants to repeat a certain action, which will be determined by the user's input.
+    do {
+        n = get_int("How many times? "); //prompts the user to enter an integer and stores it in the variable "n". This is from cs50.h, it will read an integer from the user and return it as an int. The function get_int is part of the CS50 library and is used to read an integer from the user.
+        if (n <= 0) { //this checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to return the value of "n".
+            printf("Please enter a positive integer.\n"); //this prints "Please enter a positive integer." to the console if the user entered a value for "n" that is less than or equal to 0
+        }
+    } while (n <= 0); //this is a do-while loop that will execute the block of code inside the curly braces {} at least once and then check the condition at the end of the loop. This way, you can ensure that the user is prompted for input at least once and that the loop will continue to execute until a valid input is received. Inside the loop, it prompts the user to enter an integer and stores it in the variable "n". Then, it checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to return the value of "n".
+    return n; //this returns the value of "n" to the caller of the function, which can be used in other parts of the code. This allows you to separate the logic for getting a valid input from the user into its own function, which can improve code organization and readability.
 }
