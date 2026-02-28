@@ -1,5 +1,12 @@
 #include <stdio.h> //standard input/output library, which provides functions for reading and writing data to the console and files
 #include <cs50.h> //CS50 library, which provides additional functions for working with strings, files, and other data types
+void meow(int n) {
+    //this is a function declaration for a function called "meow" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Meow!" to the console.
+    for (int i = 0; i < n; i++) { //this is a for loop that will execute the block of code inside the curly braces {} a specific number of times. In this case, it will initialize "i" to 0, check if "i < n" is true, and if so, it will execute the block of code and then increment "i" by 1. This process will repeat until "i" is no longer less than "n".
+         printf("Meow!\n"); //this prints "Meow!" to the console followed by a newline character, and it will be printed "n" times because of the for loop.
+    }
+} //it is better do use a function prototype then whatever this is for example, you can declare the function prototype at the top of the file like this: void meow(void); and then define the function body later in the file. This way, you can call the function "meow" from anywhere in the file without having to worry about the order of the function definitions.
+void hello(void);
 int main(void) {
     //======== C BASICS ========
     printf("hello, world\n"); //prints "hello, world" to the console
@@ -152,8 +159,8 @@ int main(void) {
     for (i = 0; i < 3; i++) { //this is a for loop that will execute the block of code inside the curly braces {} a specific number of times. In this case, it will initialize "i" to 0, check if "i < 3" is true, and if so, it will execute the block of code and then increment "i" by 1. This process will repeat until "i" is no longer less than 3.
         printf("%d\n", i); //prints the current value of "i" to the console
     }
-    int n;
-    while (true) {
+    int n; //n is in the the scope of the main function, which means that it can be accessed and modified by any code within the main function. This variable "n" will be used to store the number of times the user wants to repeat a certain action, which will be determined by the user's input.
+    while (true) { //this is a bad example of a loop a better one in this case would be to use a do-while loop, which will execute the block of code at least once and then check the condition at the end of the loop. This way, you can ensure that the user is prompted for input at least once and that the loop will continue to execute until a valid input is received.
         n = get_int("How many times? "); //prompts the user to enter an integer and stores it in the variable "n"
         //our own error handling: this is a while loop that will continue to execute indefinitely until the user enters a valid input for "n". Inside the loop, it prompts the user to enter an integer and stores it in the variable "n". Then, it checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to the next part of the code, which is a for loop that will print the numbers from 0 to n-1.
         if (n <= 0) { //this checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to the next part of the code.
@@ -165,11 +172,33 @@ int main(void) {
             break; //this breaks out of the while loop if the user entered a valid value for "n" (greater than 0)
         }
     }
+    //here is a do-while loop that achieves the same result as the previous while loop, but is more concise and easier to read:
+    do { //a do-while loop that will execute the block of code inside the curly braces {} at least once and then check the condition at the end of the loop. This way, you can ensure that the user is prompted for input at least once and that the loop will continue to execute until a valid input is received.
+        n = get_int("How many times? "); //prompts the user to enter an integer and stores it in the variable "n"
+        if (n <= 0) { //this checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to the next part of the code, which is a for loop that will print the numbers from 0 to n-1.
+            printf("Please enter a positive integer.\n"); //this prints "Please enter a positive integer." to the console if the user entered a value for "n" that is less than or equal to 0
+        }
+    }while (n <= 0);
     for (i = 0; i < n; i++) {
         printf("%d\n", i); //this prints the current value of "i" to the console, which will be from 0 to n-1)
     }
+    //======== SCOPE ========
     {
         int n; //this is a block of code that declares a new variable "n" that is local to this block. This means that this variable "n" is different from the previous variable "n" declared outside of this block. The value of this new variable "n" will not affect the value of the previous variable "n" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
     }
+    //======== FUNCTIONS ========
+    //functions are reusable blocks of code that perform a specific task. They can take input parameters
+    //and return a value. Functions help to organize code and make it more modular and easier to read. In C, you can define your own functions by specifying the return type, function name, and parameters (if any) in the function declaration, and then providing the function body with the implementation of the desired functionality.
+    int number = get_int("Enter a number: "); //prompts the user to enter an integer and stores it in the variable "number"
+    if (number <= 0) {
+        printf("Please enter a positive integer.\n"); //this prints "Please enter a positive integer." to the console if the user entered a value for "number" that is less than or equal to 0
+    }
+    else {
+        meow(number); //this calls the function "meow" with the argument "number", which will execute the code inside the function body and print "Meow!" to the console "number" times.
+    }
+    hello(); //see line 7 and 195 for the function declaration and definition of "hello". This line calls the function "hello", which will execute the code inside the function body and print "Hello" to the console.
     return 0; //returns 0 to indicate that the program ended successfully
+}
+void hello(void) { //this is a function declaration for a function called "hello" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Hello, world!" to the console.
+    printf("Hello, world!\n"); //this prints "Hello, world!" to the console followed by a newline character
 }
