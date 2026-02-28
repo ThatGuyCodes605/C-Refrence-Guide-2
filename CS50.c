@@ -107,39 +107,69 @@ int main(void) {
     counter++; //increments the value of "counter" by 1
     x = get_int("whats x? "); //prompts the user to enter an integer and stores it in the preexisting variable "x"
     y = get_int("whats y? "); //prompts the user to enter an integer and stores it in the preexisting variable "y"
-    if (x < y) {
-        printf("x is less than y\n");
+    if (x < y) { //this is an if statement that checks if the value of "x" is less than the value of "y". If this condition is true, it will execute the block of code inside the curly braces {} and print "x is less than y" to the console. If the condition is false, it will skip this block of code and check the next condition in the else if statement.
+        printf("x is less than y\n"); //this prints "x is less than y" to the console if the condition "x < y" is true
     }
-    else if (x > y) {
-        printf("x is greater than y\n");
+    else if (x > y) { //this is an else if statement that checks if the value of "x" is greater than the value of "y". This block of code will only be executed if the previous condition "x < y" was false. If this condition is true, it will execute the block of code inside the curly braces {} and print "x is greater than y" to the console. If this condition is also false, it will skip this block of code and execute the block of code inside the else statement.
+        printf("x is greater than y\n"); //this prints "x is greater than y" to the console if the condition "x > y" is true
     }
-    else {
-        printf("x is equal to y\n");
+    else { //this is an else statement that will be executed if both of the previous conditions "x < y" and "x > y" were false. This means that the value of "x" is equal to the value of "y". It will execute the block of code inside the curly braces {} and print "x is equal to y" to the console.
+        printf("x is equal to y\n"); //this prints "x is equal to y" to the console if both conditions "x < y" and "x > y" are false, which means that "x" is equal to "y"
     }
     //here's a bad example of an if statement:
-    if (x < y) {
-        printf("x is less than y\n");
+    if (x < y) { //this is an if statement that checks if the value of "x" is less than the value of "y". If this condition is true, it will execute the block of code inside the curly braces {} and print "x is less than y" to the console. However, if this condition is false, it will still check the next two conditions "x > y" and "x == y", which is inefficient because it will check all three conditions even if the first one is true.
+        printf("x is less than y\n"); //this prints "x is less than y" to the console if the condition "x < y" is true
     }
-    if (x > y) {
-        printf("x is greater than y\n");
+    if (x > y) { //this is an if statement that checks if the value of "x" is greater than the value of "y". This block of code will be executed regardless of whether the previous condition "x < y" was true or false. If this condition is true, it will execute the block of code inside the curly braces {} and print "x is greater than y" to the console. If this condition is false, it will skip this block of code and check the next condition "x == y".
+        printf("x is greater than y\n"); //this prints "x is greater than y" to the console if the condition "x > y" is true
     }
-    if (x == y) {
-        printf("x is equal to y\n");
+    if (x == y) { //this is an if statement that checks if the value of "x" is equal to the value of "y". This block of code will be executed regardless of whether the previous conditions "x < y" and "x > y" were true or false. If this condition is true, it will execute the block of code inside the curly braces {} and print "x is equal to y" to the console. If this condition is false, it will skip this block of code and do nothing.
+        printf("x is equal to y\n"); //this prints "x is equal to y" to the console if the condition "x == y" is true
     }
     //this is bad because it will check all three conditions even if the first one is true, which is inefficient. The correct way to write this would be to use else if statements, as shown in the previous example, which will only check the next condition if the previous one is false.
 
     c = get_char("Do you agree? (y/n) "); //prompts the user to enter a character and stores it in the preexisting variable "c" this is from cs50.h, it will read a single character from the user and return it as a char. The function get_char is part of the CS50 library and is used to read a single character from the user.
-    if (c == 'y' || c == 'Y') {
-        printf("You agreed!\n");
+    if (c == 'y' || c == 'Y') { //when working with characters in C, you can use single quotes (' ') to denote a character literal. In this case, 'y' and 'Y' are character literals representing the lowercase and uppercase versions of the letter "y". The double quotes (" ") are used for string literals, which represent a sequence of characters. So, when you want to compare a char variable to a specific character, you should use single quotes to denote the character literal. also the || operator is the logical OR operator, which allows you to check if either condition is true. In this case, it checks if the variable "c" is equal to 'y' or 'Y', which means that the user agreed regardless of whether they entered a lowercase or uppercase "y".
+        printf("You agreed!\n"); //this prints "You agreed!" to the console if the user entered 'y' or 'Y'
     }
-    else if (c == 'n' || c == 'N') {
-        printf("You disagreed!\n");
+    else if (c == 'n' || c == 'N') { //this checks if the variable "c" is equal to 'n' or 'N', which means that the user disagreed regardless of whether they entered a lowercase or uppercase "n".
+        printf("You disagreed!\n"); //this prints "You disagreed!" to the console if the user entered 'n' or 'N'
     }
     else {
-        printf("Invalid input!\n");
+        printf("Invalid input!\n"); //this prints "Invalid input!" to the console if the user entered anything other than 'y', 'Y', 'n', or 'N'
     }
+    //======== LOOPS ========
+    int i = 3; //declares an integer variable called "i" and initializes it with the value 3
+    while (i > 0) { //this is a while loop that will continue to execute as long as the condition "i > 0" is true. In this case, it will print the value of "i" and then decrement it by 1 until "i" is no longer greater than 0.
+        printf("%d\n", i); //prints the current value of "i" to the console
+        i--; //decrements the value of "i"
+    }
+    i = 0; //resets the value of "i" to 0
+    while (i < 3) { //this is a while loop that will continue to execute as long as the condition "i < 3" is true. In this case, it will print the value of "i" and then increment it by 1 until "i" is no longer less than 3.
+        printf("%d\n", i); //prints the current value of "i" to the console
+        i++; //increments the value of "i"
+    }
+    for (i = 0; i < 3; i++) { //this is a for loop that will execute the block of code inside the curly braces {} a specific number of times. In this case, it will initialize "i" to 0, check if "i < 3" is true, and if so, it will execute the block of code and then increment "i" by 1. This process will repeat until "i" is no longer less than 3.
+        printf("%d\n", i); //prints the current value of "i" to the console
+    }
+    int n;
+    while (true) {
+        n = get_int("How many times? "); //prompts the user to enter an integer and stores it in the variable "n"
+        //our own error handling: this is a while loop that will continue to execute indefinitely until the user enters a valid input for "n". Inside the loop, it prompts the user to enter an integer and stores it in the variable "n". Then, it checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to the next part of the code, which is a for loop that will print the numbers from 0 to n-1.
+        if (n <= 0) { //this checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to the next part of the code.
+            printf("Please enter a positive integer.\n"); //this prints "Please enter a positive integer." to the console if the user entered a value for "n" that is less than or equal to 0
+            continue; //this continues the loop, prompting the user to enter a new value for "n"
+        }
+        else {
 
-
-
+            break; //this breaks out of the while loop if the user entered a valid value for "n" (greater than 0)
+        }
+    }
+    for (i = 0; i < n; i++) {
+        printf("%d\n", i); //this prints the current value of "i" to the console, which will be from 0 to n-1)
+    }
+    {
+        int n; //this is a block of code that declares a new variable "n" that is local to this block. This means that this variable "n" is different from the previous variable "n" declared outside of this block. The value of this new variable "n" will not affect the value of the previous variable "n" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+    }
     return 0; //returns 0 to indicate that the program ended successfully
 }
