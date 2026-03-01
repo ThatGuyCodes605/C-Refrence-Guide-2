@@ -211,6 +211,84 @@ int main(void) {
     //3. Avoid code duplication by reusing functions and creating helper functions when necessary.
     //4. Use comments to explain the purpose and functionality of code, but avoid over-commenting or stating the obvious.
     //5. Follow consistent coding style and formatting conventions to improve readability
+    //6. Handle errors and edge cases gracefully to prevent crashes and improve user experience.
+    //7. Refactor code regularly to improve its structure and maintainability as the project evolves.
+    //By following these principles, you can write clean code that is easier to read, understand, and maintain, which can lead to more efficient development and a better overall user experience.
+    for (int c = 0; c < 4; c++) {
+        printf("?"); //if we added a newline character after the question mark, it would print each question mark on a new line, which may not be the desired output. By keeping the question mark and the newline character separate, we can control the formatting of the output more precisely and ensure that the question marks are printed on the same line as intended.
+    }
+    printf("\n"); //this prints a newline character to the console, which moves the cursor to the next line after printing the question marks.
+    for (int c = 0; c < 4; c++) {
+        printf("#\n");
+    }
+    { //I put this in its own scope because the variable "n" is only used within this block of code, and it helps to keep the variable's scope limited to where it is needed. This can improve code readability and prevent accidental modifications to the variable from other parts of the code.
+        const int n = 4; //this declares a constant integer variable called "n" and initializes it with the value 4. The "const" keyword indicates that the value of "n" cannot be changed after it is initialized, which can help prevent accidental modifications to the variable and improve code safety.
+        for (int row  = 0; row < n; row++) {
+           for (int col  = 0; col < n; col++) {
+               printf("#"); //this prints a "#" character to the console without a newline character, which allows us to print multiple "#" characters on the same line.
+           }
+             printf("\n"); //this prints a newline character to the console after printing 4 "#" characters, which moves the cursor to the next line for the next iteration of the outer loop.
+        }
+    } //End Of Scope
+    {//this is another block of code that demonstrates variable scope in C. The variables "x", "y", and "z" declared inside this block are local to this block and do not interfere with any previous variables with the same names declared outside of this block. This allows us to reuse variable names without causing conflicts or confusion, as each variable is only accessible within its own scope.
+        int x = get_int("whats x? "); //this declares a new variable "x" that is local to this block. This means that this variable "x" is different from any previous variable "x" declared outside of this block. The value of this new variable "x" will not affect the value of any previous variable "x" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+        int y = get_int("whats y? "); //this declares a new variable "y" that is local to this block. This means that this variable "y" is different from any previous variable "y" declared outside of this block. The value of this new variable "y" will not affect the value of any previous variable "y" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+        int z = x + y; //this declares a new variable "z" that is local to this block and initializes it with the sum of "x" and "y". This variable "z" is only accessible within this block and does not interfere with any previous variable "z" declared outside of this block.
+        //having variables with the same name in different scopes can be useful for organizing code and preventing naming conflicts, but it can also lead to confusion if not used carefully. It is important to choose variable names that are descriptive and meaningful to avoid confusion and improve code readability.
+        printf("x + y = %d\n", z); //this prints the value of "z" to the console, which is the sum of "x" and "y". The format specifier %d is used to indicate that "z" is an integer and should be printed as such.
+        //having z being only used once is bad practice, it would be better to directly print the result of x + y without storing it in a variable that is only used once. This can improve code readability and reduce unnecessary variables in the code. For example, instead of declaring "int z = x + y;" and then printing "z", you can directly print "x + y" like this: printf("x + y = %d\n", x + y); This way, you can avoid creating a variable that is only used once and make the code more concise and easier to read.
+        //so we could do this:
+        printf("x + y = %d\n", x+y );
+        x = get_int("whats x? "); //this declares a new variable "x" that is local to this block. This means that this variable "x" is different from any previous variable "x" declared outside of this block. The value of this new variable "x" will not affect the value of any previous variable "x" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+        printf("x * 2 = %d\n", x*2); //this prints the value of "x" multiplied by 2 to the console. The format specifier %d is used to indicate that the result of "x * 2" is an integer and should be printed as such.
+        int dollars = 1;
+        while (true) {
+            char c = get_char("Here's $%d. double it and give to the next person? ", dollars);
+            if (c == 'y' || c == 'Y') {
+                dollars *= 2; //this doubles the value of "dollars" by multiplying it by 2 and assigning the result back to "dollars". This is a shorthand way of writing "dollars = dollars * 2;" and is commonly used in C to update the value of a variable based on its current value.
+                //this can cause an interager overflow if the value of "dollars" exceeds the maximum value that can be stored in an integer variable. In C, the maximum value for a signed integer is typically 2,147,483,647 (2^31 - 1). If "dollars" exceeds this value, it will wrap around to a negative number due to integer overflow. To prevent this, you can use a larger data type such as "long long" or "unsigned long long" to store the value of "dollars", which can handle larger numbers without overflowing. Alternatively, you can add a check before doubling "dollars" to ensure that it does not exceed the maximum value for an integer before performing the multiplication.
+                //to fix this we can do this: (see line 263)
+            }
+            else if (c == 'n' || c == 'N') {
+                printf("You ended with $%d\n", dollars); //this prints the final value of "dollars" to the console when the user decides to end the loop by entering 'n' or 'N'.
+                break; //this breaks out of the while loop, ending the program.
+            }
+            else {
+                printf("Invalid input!\n"); //this prints "Invalid input!" to the console if the user entered anything other than 'y', 'Y', 'n', or 'N'
+            }
+        }
+
+
+    } //End Of Scope
+    {
+        long int dollars = 1; //this declares a variable "dollars" of type "long int" and initializes it with the value 1. The "long int" data type can store larger integer values than the standard "int" data type, which can help prevent integer overflow when doubling the value of "dollars".
+        while (true) {
+            char c = get_char("Here's $%ld. double it and give to the next person? ", dollars); //this prompts the user to enter a character and stores it in the variable "c". The format specifier %ld is used to indicate that "dollars" is a long integer and should be printed as such in the prompt.
+            if (c == 'y' || c == 'Y') {
+                dollars *= 2; //this doubles the value of "dollars" by multiplying it by 2 and assigning the result back to "dollars". This is a shorthand way of writing "dollars = dollars * 2;" and is commonly used in C to update the value of a variable based on its current value.
+            }
+            else if (c == 'n' || c == 'N') {
+                printf("You ended with $%ld\n", dollars); //this prints the final value of "dollars" to the console when the user decides to end the loop by entering 'n' or 'N'. The format specifier %ld is used to indicate that "dollars"
+                break;
+            }
+            else {
+                printf("Invalid input!\n"); //this prints "Invalid input!" to the console if the user entered anything other than 'y', 'Y', 'n', or 'N'
+            }
+        }
+    } //End Of Scope
+    {
+        int x = get_int("whats x? "); //this declares a new variable "x" that is local to this block. This means that this variable "x" is different from any previous variable "x" declared outside of this block. The value of this new variable "x" will not affect the value of any previous variable "x" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+        int y = get_int("whats y? "); //this declares a new variable "y" that is local to this block. This means that this variable "y" is different from any previous variable "y" declared outside of this block. The value of this new variable "y" will not affect the value of any previous variable "y" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+        printf("x / y = %d\n", x/y ); //this is bad because of something called truncation where it will not return a decimal place because it is treating the result as an integer. To fix this, we can cast either "x" or "y" to a floating-point type (such as float or double) before performing the division, which will allow us to get a more accurate result with decimal places. For example, we can do this: printf("x / y = %.2f\n", (float)x / y); This will print the result of "x / y" as a floating-point number with 2 decimal places.
+        //to fix this we can do this:
+        {
+            float x = get_int("whats x? "); //this declares a new variable "x" that is local to this block. This means that this variable "x" is different from any previous variable "x" declared outside of this block. The value of this new variable "x" will not affect the value of any previous variable "x" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+            float y = get_int("whats y? "); //this declares a new variable "y" that is local to this block. This means that this variable "y" is different from any previous variable "y" declared outside of this block. The value of this new variable "y" will not affect the value of any previous variable "y" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
+            printf("x / y = %.50f\n", x/y ); //this prints the result of "x / y" as a floating-point number with 50 decimal places. The format specifier %.50f is used to indicate that the result should be printed as a floating-point number with 50 decimal places. this will cause floating point imprecision issues if the result has more than 50 decimal places, as it will round the result to fit within the specified number of decimal places. To avoid this, you can choose an appropriate number of decimal places based on the expected precision of the result and the limitations of floating-point representation in C.
+            
+
+        }
+    }
     return 0; //returns 0 to indicate that the program ended successfully
 }
 void hello(void) { //this is a function declaration for a function called "hello" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Hello, world!" to the console.
