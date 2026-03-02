@@ -9,6 +9,7 @@ void meow(int n) {
 } //it is better do use a function prototype then whatever this is for example, you can declare the function prototype at the top of the file like this: void meow(void); and then define the function body later in the file. This way, you can call the function "meow" from anywhere in the file without having to worry about the order of the function definitions.
 void hello(void);
 int main(void) {
+    //week 1
     //======== C BASICS ========
     printf("hello, world\n"); //prints "hello, world" to the console
     printf("hello, world"); //prints "hello, world" to the console without a newline character at the end
@@ -276,7 +277,7 @@ int main(void) {
             }
         }
     } //End Of Scope
-    {
+    { //start of a new block of code to demonstrate variable scope and floating-point division in C
         int x = get_int("whats x? "); //this declares a new variable "x" that is local to this block. This means that this variable "x" is different from any previous variable "x" declared outside of this block. The value of this new variable "x" will not affect the value of any previous variable "x" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
         int y = get_int("whats y? "); //this declares a new variable "y" that is local to this block. This means that this variable "y" is different from any previous variable "y" declared outside of this block. The value of this new variable "y" will not affect the value of any previous variable "y" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
         printf("x / y = %d\n", x/y ); //this is bad because of something called truncation where it will not return a decimal place because it is treating the result as an integer. To fix this, we can cast either "x" or "y" to a floating-point type (such as float or double) before performing the division, which will allow us to get a more accurate result with decimal places. For example, we can do this: printf("x / y = %.2f\n", (float)x / y); This will print the result of "x / y" as a floating-point number with 2 decimal places.
@@ -285,10 +286,12 @@ int main(void) {
             float x = get_int("whats x? "); //this declares a new variable "x" that is local to this block. This means that this variable "x" is different from any previous variable "x" declared outside of this block. The value of this new variable "x" will not affect the value of any previous variable "x" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
             float y = get_int("whats y? "); //this declares a new variable "y" that is local to this block. This means that this variable "y" is different from any previous variable "y" declared outside of this block. The value of this new variable "y" will not affect the value of any previous variable "y" and vice versa. This is an example of variable scope in C, where variables declared inside a block are only accessible within that block and do not interfere with variables declared outside of it.
             printf("x / y = %.50f\n", x/y ); //this prints the result of "x / y" as a floating-point number with 50 decimal places. The format specifier %.50f is used to indicate that the result should be printed as a floating-point number with 50 decimal places. this will cause floating point imprecision issues if the result has more than 50 decimal places, as it will round the result to fit within the specified number of decimal places. To avoid this, you can choose an appropriate number of decimal places based on the expected precision of the result and the limitations of floating-point representation in C.
-            
+
 
         }
-    }
+    } //End Of Scope
+    //week 2:
+    
     return 0; //returns 0 to indicate that the program ended successfully
 }
 void hello(void) { //this is a function declaration for a function called "hello" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Hello, world!" to the console.
