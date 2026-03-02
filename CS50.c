@@ -291,7 +291,7 @@ int main(void) {
         }
     } //End Of Scope
     //week 2:
-    
+
     return 0; //returns 0 to indicate that the program ended successfully
 }
 void hello(void) { //this is a function declaration for a function called "hello" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Hello, world!" to the console.
