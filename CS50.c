@@ -9,6 +9,7 @@ void meow(int n) {
 } //it is better do use a function prototype then whatever this is for example, you can declare the function prototype at the top of the file like this: void meow(void); and then define the function body later in the file. This way, you can call the function "meow" from anywhere in the file without having to worry about the order of the function definitions.
 void hello(void);
 int main(void) {
+    //if for some reason you want to compile this program run "make" in the terminal, and then run "./CS50" to execute the compiled program. This will allow you to see the output of the program and interact with it as needed.
     //week 1
     //======== C BASICS ========
     printf("hello, world\n"); //prints "hello, world" to the console
