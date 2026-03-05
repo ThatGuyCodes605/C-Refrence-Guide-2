@@ -25,9 +25,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23a2fa66-ab0d-43df-92d2-2bc87c7d93ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS50" beforeDir="false" afterPath="$PROJECT_DIR$/CS50" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +72,9 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="3APFcHno9cWTZZBEi8dxoFVSRXV" />
+  <component name="ProjectStatusUIService"><![CDATA[{
+  "uiKindId": "Widget"
+}]]></component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -127,7 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1772486376779</updated>
       <workItem from="1772486377775" duration="95000" />
-      <workItem from="1772486515325" duration="1254000" />
+      <workItem from="1772486515325" duration="5116000" />
     </task>
     <servers />
   </component>
