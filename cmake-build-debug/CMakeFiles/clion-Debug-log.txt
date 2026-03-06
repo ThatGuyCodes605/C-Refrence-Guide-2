@@ -1,1 +1,1 @@
-CMakeLists.txt not found in /home/jamie/C-Refrence-Guide-2 Select CMakeLists.txt
+CMakeLists.txt not found in /home/jamie/Coding/github/C-Refrence-Guide-2 Select CMakeLists.txt

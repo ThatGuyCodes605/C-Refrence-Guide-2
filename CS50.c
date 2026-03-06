@@ -1,6 +1,7 @@
 #include <stdio.h> //standard input/output library, which provides functions for reading and writing data to the console and files
 #include <cs50.h> //CS50 library, which provides additional functions for working with strings, files, and other data types
 int get_n(void); //function prototype for the function "get_n", which will be defined later in the code. This allows us to call the function "get_n" from the main function before its actual definition, which can improve code organization and readability.
+int average(int n, int scores[]); //function prototype for the function "average", which will be defined later in the code. This allows us to call the function "average" from the main function before its actual definition, which can improve code organization and readability.
 void meow(int n) {
     //this is a function declaration for a function called "meow" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Meow!" to the console.
     for (int i = 0; i < n; i++) { //this is a for loop that will execute the block of code inside the curly braces {} a specific number of times. In this case, it will initialize "i" to 0, check if "i < n" is true, and if so, it will execute the block of code and then increment "i" by 1. This process will repeat until "i" is no longer less than "n".
@@ -292,8 +293,74 @@ int main(void) {
         }
     } //End Of Scope
     //week 2:
+    //bool - 1 byte, can be true or false
+    //int - 4 bytes, can store whole numbers from -2,147,483,648 to 2,147,483,647
+    //long - 8 bytes, can store whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+    //float - 4 bytes, can store decimal numbers with about 7 digits of precision
+    //double - 8 bytes, can store decimal numbers with about 15 digits of precision
+    //char - 1 byte, can store a single character (letter, digit, symbol)
+    //string - ? bytes, a sequence of characters, typically stored as an array of char in C
+    //======== ARRAYS =======
+    int score1 = 72; //this declares an integer variable called "score1" and initializes it with the value 72
+    int score2 = 73; //this declares an integer variable called "score2" and initializes it with the value 73
+    int score3 = 33; //this declares an integer variable called "score3" and initializes it with the value 33
+    printf("Average: %.2f\n", (score1 + score2 + score3) / 3.0); //this calculates the average of the three scores by adding them together and dividing by 3.0 (using 3.0 instead of 3 to ensure that the division is performed as floating-point division, which allows for a more accurate result with decimal places). The format specifier %.2f is used to indicate that the result should be printed as a floating-point number with 2 decimal places.
+    //this is bad design we can just use an array
+    {
+        int scores[3] = {72, 73, 33}; //this declares an array of integers called "scores" with a size of 3 and initializes it with the values 72, 73, and 33. This allows us to store multiple related values in a single variable and access them using an index.
+        printf("Average: %.2f\n", (scores[0] + scores[1] + scores[2]) / 3.0); //this calculates the average of the three scores by accessing each score in the "scores" array using its index (0, 1, and 2) and adding them together, then dividing by 3.0 to get the average. The format specifier %.2f is used to indicate that the result should be printed as a floating-point number with 2 decimal places.
+    }
+    {
+        int scores[3] = {get_int("Score: "), get_int("Score: "), get_int("Score: ")};
+        //this is also bad design because it is not scalable. If we wanted to calculate the average of 100 scores, we would have to write 100 calls to get_int and manually add them together, which is not efficient or practical. A better design would be to use a loop to read the scores into the array and calculate the average, like this:
+        {
+            const int n = 3; //this declares a constant integer variable called "n" and initializes it with the value 3. This variable "n" represents the number of scores we want to read and calculate the average for. By using a constant variable, we can easily change the number of scores we want to handle without having to modify multiple parts of the code, which can improve code maintainability and readability.
+            int scores[n]; //this declares an array of integers called "scores" with a size of "n". This allows us to store "n" scores in the array and access them using an index.
+            for (int i = 0; i < n; i++) { //this is a for loop that will execute "n" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "n". Inside the loop, it prompts the user to enter a score and stores it in the "scores" array at index "i". This allows us to read "n" scores from the user and store them in the array without having to write multiple calls to get_int.
+                scores[i] = get_int("Score: "); //this prompts the user to enter a score and stores it in the "scores" array at index "i". This allows us to read "n" scores from the user and store them in the array without having to write multiple calls to get_int.
+            }
+            int sum = 0; //this declares an integer variable called "sum" and initializes it with the value 0. This variable will be used to accumulate the sum of all the scores in the "scores" array.
+            for (int i = 0; i < n; i++) { //this is a for loop that will execute "n" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "n". Inside the loop, it adds the score at index "i" in the "scores" array to the "sum" variable. This allows us to calculate the total sum of all the scores in the array.
+                sum += scores[i]; //this adds the score at index "i" in the "scores" array to the "sum" variable. This is a shorthand way of writing "sum = sum + scores[i];" and is commonly used in C to update the value of a variable based on its current value.
+            }
+            printf("Average: %.2f\n", (float)sum / n); //this calculates the average of the scores by dividing the total "sum" of the scores by "n" (the number of scores). The result is cast to a float to ensure that the division is performed as floating-point division, which allows for a more accurate result with decimal places. The format specifier %.2f is used to indicate that the result should be printed as a floating-point number with 2 decimal places.
+            //you think this is a good design? well WRONG!!!! we can do BETTER
+        }
+        {
+            //the final perfected version of the code to read a variable number of scores and calculate the average would look like this:
+            int num_of_scores = get_int("How many scores? "); //this prompts the user to enter the number of scores they want to input and stores it in the variable "num_of_scores". This allows us to handle a variable number of scores without having to hardcode the size of the array or the number of iterations in the loops.
+            int scores[num_of_scores]; //this declares an array of integers called "scores" with a size of "num_of_scores". This allows us to store the scores in the array based on the number of scores the user wants to input, which can improve code flexibility and scalability.
+            for (int i = 0; i < num_of_scores; i++) { //this is a for loop that will execute "num_of_scores" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "num_of_scores". Inside the loop, it prompts the user to enter a score and stores it in the "scores" array at index "i". This allows us to read a variable number of scores from the user and store them in the array without having to write multiple calls to get_int or hardcode the size of the array.
+                scores[i] = get_int("Score: "); //this prompts the user to enter a score and stores it in the "scores" array at index "i". This allows us to read a variable number of scores from the user and store them in the array without having to write multiple calls to get_int or hardcode the size of the array.
+            }
+            int sum = 0; //this declares an integer variable called "sum" and initializes it with the value 0. This variable will be used to accumulate the sum of all the scores in the "scores" array.
+            for (int i = 0; i < num_of_scores; i++) { //this is a for loop that will execute "num_of_scores" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "num_of_scores". Inside the loop, it adds the score at index "i" in the "scores" array to the "sum" variable. This allows us to calculate the total sum of all the scores in the array based on the number of scores the user wants to input.
+                sum += scores[i]; //this adds the score at index "i" in the "scores" array to the "sum" variable. This is a shorthand way of writing "sum = sum + scores[i];" and is commonly used in C to update the value of a variable based on its current value.
+            }
+            printf("Average: %.2f\n", (float)sum / num_of_scores); //this calculates the average of the scores by dividing the total "sum" of the scores by "num_of_scores" (the number of scores). The result is cast to a float to ensure that the division is performed as floating-point division, which allows for a more accurate result with decimal places. The format specifier %.2f is used to indicate that the result should be printed as a floating-point number with 2 decimal places. This design allows us to handle a variable number of scores and calculate the average without having to hardcode the size of the array or the number of iterations in the loops, which can improve code flexibility and scalability.
+            //now lets do a function version
+        }
+        {
+            int num_of_scores = get_int("How many scores? "); //this prompts the user to enter the number of scores they want to input and stores it in the variable "num_of_scores". This allows us to handle a variable number of scores without having to hardcode the size of the array or the number of iterations in the loops.
+            int scores[num_of_scores]; //this declares an array of integers called "scores" with a size of "num_of_scores". This allows us to store the scores in the array based on the number of scores the user wants to input, which can improve code flexibility and scalability.
+            for (int i = 0; i < num_of_scores; i++) { //this is a for loop that will execute "num_of_scores" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "num_of_scores". Inside the loop, it prompts the user to enter a score and stores it in the "scores" array at index "i". This allows us to read a variable number of scores from the user and store them in the array without having to write multiple calls to get_int or hardcode the size of the array.
+                scores[i] = get_int("Score: "); //this prompts the user to enter a score and stores it in the "scores" array at index "i". This allows us to read a variable number of scores from the user and store them in the array without having to write multiple calls to get_int or hardcode the size of the array.
+            }
+
+            printf("Average: %.2f\n", average(num_of_scores, scores)); //this prints the value of "average" to the console with 2 decimal places. The format specifier %.2f is used to indicate that "average" should be printed as a floating-point number with 2 decimal places.
+        }
+    }
+
+
 
     return 0; //returns 0 to indicate that the program ended successfully
+}
+int average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
+    int sum = 0; //this declares an integer variable called "sum" and initializes it with the value 0. This variable will be used to accumulate the sum of all the scores in the "scores" array.
+    for (int i = 0; i < n; i++) { //this is a for loop that will execute "n" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "n". Inside the loop, it adds the score at index "i" in the "scores" array to the "sum" variable. This allows us to calculate the total sum of all the scores in the array based on the number of scores passed as a parameter to the function.
+        sum += scores[i]; //this adds the score at index "i" in the "scores" array to the "sum" variable. This is a shorthand way of writing "sum = sum + scores[i];" and is commonly used in C to update the value of a variable based on its current value.
+    }
+    return (float)sum / n; //this calculates the average of the scores by dividing the total "sum" of the scores by "n" (the number of scores). The result is cast to a float to ensure that the division is performed as floating-point division, which allows for a more accurate result with decimal places. The calculated average is then returned as a float to the caller of the function.
 }
 void hello(void) { //this is a function declaration for a function called "hello" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Hello, world!" to the console.
     printf("Hello, world!\n"); //this prints "Hello, world!" to the console followed by a newline character
