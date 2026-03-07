@@ -350,6 +350,15 @@ int main(void) {
             printf("Average: %.2f\n", average(num_of_scores, scores)); //this prints the value of "average" to the console with 2 decimal places. The format specifier %.2f is used to indicate that "average" should be printed as a floating-point number with 2 decimal places.
         }
     }
+    char c1 = 'H'; //this declares a character variable called "c1" and initializes it with the value 'H'
+    char c2 = 'i'; //this declares a character variable called "c2" and initializes it with the value 'i'
+    char c3 = '!'; //this declares a character variable called "c3" and initializes it with the value '!'
+    printf("%c%c%c\n", c1, c2, c3); //this prints the characters stored in "c1", "c2", and "c3" to the console. The format specifier %c is used to indicate that each variable should be printed as a character. The output will be "Hi!" followed by a newline character.
+    printf("%i %i %i\n", c1, c2, c3); //this prints the integer values of the characters stored in "c1", "c2", and "c3" to the console. The format specifier %i is used to indicate that each variable should be printed as an integer. The output will be the ASCII values of 'H', 'i', and '!', which are 72, 105, and 33 respectively, followed by a newline character.)
+    //what is a string?
+    string s = "HI!";
+    printf("%s\n", s); //this prints the string stored in "s" to the console. The format specifier %s is used to indicate that "s" should be printed as a string. The output will be "HI!" followed by a newline character.
+
 
 
 
