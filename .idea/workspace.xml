@@ -83,7 +83,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "C/C++ File.CS50.c (1).executor": "Debug",
+    "C/C++ File.CS50.c (1).executor": "Run",
     "C/C++ File.CS50.c.executor": "Run",
     "CMake Application.C_Refrence_Guide_2.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -151,7 +151,7 @@
       <updated>1772486376779</updated>
       <workItem from="1772486377775" duration="95000" />
       <workItem from="1772486515325" duration="6070000" />
-      <workItem from="1772741588922" duration="8469000" />
+      <workItem from="1772741588922" duration="9638000" />
     </task>
     <task id="LOCAL-00001" summary="this code is still under GPLV3">
       <option name="closed" value="true" />

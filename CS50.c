@@ -1,5 +1,7 @@
 #include <stdio.h> //standard input/output library, which provides functions for reading and writing data to the console and files
 #include <cs50.h> //CS50 library, which provides additional functions for working with strings, files, and other data types
+#include <string.h>
+
 int get_n(void); //function prototype for the function "get_n", which will be defined later in the code. This allows us to call the function "get_n" from the main function before its actual definition, which can improve code organization and readability.
 int average(int n, int scores[]); //function prototype for the function "average", which will be defined later in the code. This allows us to call the function "average" from the main function before its actual definition, which can improve code organization and readability.
 void meow(int n) {
@@ -360,7 +362,34 @@ int main(void) {
     printf("%s\n", s); //this prints the string stored in "s" to the console. The format specifier %s is used to indicate that "s" should be printed as a string. The output will be "HI!" followed by a newline character.
     printf("%c%c%c\n", s[0], s[1], s[2]); //this prints the individual characters of the string "s" to the console. The format specifier %c is used to indicate that each character should be printed as a character. The output will be "HI!" followed by a newline character, as it accesses the characters at index 0, 1, and 2 of the string "s".
     printf("%c%c%c%c\n", s[0], s[1], s[2], s[3]); //this print the NUL terminator character at the end of the string "s" to the console. The format specifier %c is used to indicate that each character should be printed as a character. The output will be "HI!" followed by a newline character, and then a null character (which may not be visible in the console) because it accesses the characters at index 0, 1, 2, and 3 of the string "s". The character at index 3 is the null terminator ('\0') that indicates the end of the string.
-    
+    string words[2];
+    words[0] = "HI!";
+    words[1] = "BYE!";
+    printf("%s\n", words[0]); //this prints the string stored in "words[0]" to the console. The format specifier %s is used to indicate that "words[0]" should be printed as a string. The output will be "HI!" followed by a newline character.
+    printf("%s\n", words[1]); //this prints the string stored in "words[1]" to the console. The format specifier %s is used to indicate that "words[1]" should be printed as a string. The output will be "BYE!" followed by a newline character.
+    printf("%c%c%c%c\n", words[0][0], words[0][1], words[0][2]); //this prints the individual characters of the string stored in "words[0]" to the console. The format specifier %c is used to indicate that each character should be printed as a character. The output will be "HI!" followed by a newline character, as it accesses the characters at index 0, 1, and 2 of the string stored in "words[0]".
+    printf("%c%c%c%c\n", words[1][0], words[1][1], words[1][2]); //this prints the individual characters of the string stored in "words[1]" to the console. The format specifier %c is used to indicate that each character should be printed as a character. The output will be "BYE!" followed by a newline character, as it accesses the characters at index 0, 1, and 2 of the string stored in "words[1]".
+    {
+        string name = get_string("What's your name? "); //this prompts the user to enter their name and stores it in the variable "name". The function get_string is part of the CS50 library and is used to read a string from the user. The format specifier %s can be used to print the value of "name" to the console, like this: printf("Hello, %s!\n", name); This will print a greeting that includes the user's name followed by a newline character.
+        int n = 0; //this declares an integer variable called "n" and initializes it with the value 0. This variable will be used to store the length of the string "name".
+        for (int i = 0; name[i] != '\0'; i++) { //this is a for loop that will iterate through each character of the string "name" until it reaches the null terminator ('\0'), which indicates the end of the string. The loop variable "i" starts at 0 and increments by 1 in each iteration. Inside the loop, it checks if the character at index "i" of the string "name" is not equal to the null terminator. If this condition is true, it means that we are still within the string, and we can increment the variable "n" to count the number of characters in the string.
+            n++; //this increments the variable "n" by 1 for each character in the string "name" until it reaches the null terminator. This allows us to calculate the length of the string "name" by counting the number of characters before the null terminator.
+        } //this can be replaced with the built-in function strlen from the C standard library, which calculates the length of a string by counting the number of characters until it reaches the null terminator. The code would look like this: int n = strlen(name); This is a more concise and efficient way to calculate the length of a string in C.
+        printf("Your name has %i characters.\n", n); //this prints the length of the string "name" to the console. The format specifier %i is used to indicate that "n" should be printed as an integer. The output will be "Your name has X characters." where X is the number of characters in the user's name, followed by a newline character.
+        strlen(name); //this is a function from the C standard library that calculates the length of a string by counting the number of characters until it reaches the null terminator. It takes a string as an argument and returns the length of the string as an integer. Using strlen can simplify the code and improve readability when calculating the length of a string in C.
+        printf("Your name has %i characters.\n", strlen(name)); //this prints the length of the string "name" to the console using the strlen function. The format specifier %i is used to indicate that the result of strlen(name) should be printed as an integer. The output will be "Your name has X characters." where X is the number of characters in the user's name, followed by a newline character.
+    }
+    {
+        string s = get_string("Input:  ");
+        printf("Output: %s\n", s);
+        for (int i = 0; i < strlen(s); i++) {
+            printf("%c\n", s[i]);
+        }
+        printf("\n");
+    }
+
+    //summary on strings in C: strings are just arrays of characters that are null-terminated. They can be manipulated using various functions from the C standard library, and they can be stored in arrays of strings for more complex data structures. When working with strings in C, it is important to ensure that they are properly null-terminated to avoid issues with string manipulation and memory management.
+
 
 
 
