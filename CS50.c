@@ -350,14 +350,18 @@ int main(void) {
             printf("Average: %.2f\n", average(num_of_scores, scores)); //this prints the value of "average" to the console with 2 decimal places. The format specifier %.2f is used to indicate that "average" should be printed as a floating-point number with 2 decimal places.
         }
     }
+    //what is a string? A string is a sequence of characters, typically stored as an array of char in C. It is used to represent text and can contain letters, digits, symbols, and whitespace. In C, strings are null-terminated, meaning that they end with a special character called the null character ('\0') to indicate the end of the string. This allows functions that operate on strings to determine where the string ends. Strings can be manipulated using various functions from the C standard library, such as strlen (to get the length of a string), strcpy (to copy a string), strcat (to concatenate two strings), and many others.
     char c1 = 'H'; //this declares a character variable called "c1" and initializes it with the value 'H'
     char c2 = 'i'; //this declares a character variable called "c2" and initializes it with the value 'i'
     char c3 = '!'; //this declares a character variable called "c3" and initializes it with the value '!'
     printf("%c%c%c\n", c1, c2, c3); //this prints the characters stored in "c1", "c2", and "c3" to the console. The format specifier %c is used to indicate that each variable should be printed as a character. The output will be "Hi!" followed by a newline character.
     printf("%i %i %i\n", c1, c2, c3); //this prints the integer values of the characters stored in "c1", "c2", and "c3" to the console. The format specifier %i is used to indicate that each variable should be printed as an integer. The output will be the ASCII values of 'H', 'i', and '!', which are 72, 105, and 33 respectively, followed by a newline character.)
-    //what is a string?
     string s = "HI!";
     printf("%s\n", s); //this prints the string stored in "s" to the console. The format specifier %s is used to indicate that "s" should be printed as a string. The output will be "HI!" followed by a newline character.
+    printf("%c%c%c\n", s[0], s[1], s[2]); //this prints the individual characters of the string "s" to the console. The format specifier %c is used to indicate that each character should be printed as a character. The output will be "HI!" followed by a newline character, as it accesses the characters at index 0, 1, and 2 of the string "s".
+    printf("%c%c%c%c\n", s[0], s[1], s[2], s[3]); //this print the NUL terminator character at the end of the string "s" to the console. The format specifier %c is used to indicate that each character should be printed as a character. The output will be "HI!" followed by a newline character, and then a null character (which may not be visible in the console) because it accesses the characters at index 0, 1, 2, and 3 of the string "s". The character at index 3 is the null terminator ('\0') that indicates the end of the string.
+    
+
 
 
 
