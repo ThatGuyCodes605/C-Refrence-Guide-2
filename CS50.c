@@ -413,8 +413,8 @@ int main(void) {
             printf("%c", toupper(s[i])); //this uses the toupper function from the ctype.h library to convert each character of the string "s" to uppercase when printing it. The toupper function takes a character as an argument and returns the uppercase version of that character if it is a lowercase letter, or returns the character unchanged if it is not a lowercase letter. This simplifies the code and improves readability by eliminating the need for manual checks and conversions for each character.
         }
     }
+    //summary on strings in C: Strings in C are sequences of characters stored as arrays of char. They are null-terminated, meaning they end with a null character ('\0') to indicate the end of the string. You can manipulate strings using various functions from the C standard library, such as strlen (to get the length of a string), strcpy (to copy a string), strcat (to concatenate two strings), and toupper (to convert characters to uppercase). When working with strings, it's important to ensure that you have enough space in your arrays to store the characters and the null terminator, and to be mindful of potential issues such as buffer overflows when manipulating strings in C.
 
-    //summary on strings in C: strings are just arrays of characters that are null-terminated. They can be manipulated using various functions from the C standard library, and they can be stored in arrays of strings for more complex data structures. When working with strings in C, it is important to ensure that they are properly null-terminated to avoid issues with string manipulation and memory management.
 
 
 
