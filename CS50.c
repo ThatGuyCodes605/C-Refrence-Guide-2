@@ -1,7 +1,7 @@
 #include <stdio.h> //standard input/output library, which provides functions for reading and writing data to the console and files
 #include <cs50.h> //CS50 library, which provides additional functions for working with strings, files, and other data types
 #include <string.h>
-
+#include <ctype.h>
 int get_n(void); //function prototype for the function "get_n", which will be defined later in the code. This allows us to call the function "get_n" from the main function before its actual definition, which can improve code organization and readability.
 int average(int n, int scores[]); //function prototype for the function "average", which will be defined later in the code. This allows us to call the function "average" from the main function before its actual definition, which can improve code organization and readability.
 void meow(int n) {
@@ -403,7 +403,14 @@ int main(void) {
             }
             else {
                 printf("%c", s[i]); //this prints the character at index "i" of the string "s" without modification if it is not a lowercase letter. This allows us to preserve any characters that are not lowercase letters while converting only the lowercase letters to uppercase.
-            }
+            } //we can shorten this by using <ctype.h> library and using the toupper function, like this: printf("%c", toupper(s[i])); This will automatically convert any lowercase letter to uppercase and leave other characters unchanged, simplifying the code and improving readability.
+        }
+    }
+    {
+        string s = get_string("Before: ");
+        printf("After:  ");
+        for (int i = 0, n = strlen(s); i < n; i++) {
+            printf("%c", toupper(s[i])); //this uses the toupper function from the ctype.h library to convert each character of the string "s" to uppercase when printing it. The toupper function takes a character as an argument and returns the uppercase version of that character if it is a lowercase letter, or returns the character unchanged if it is not a lowercase letter. This simplifies the code and improves readability by eliminating the need for manual checks and conversions for each character.
         }
     }
 
