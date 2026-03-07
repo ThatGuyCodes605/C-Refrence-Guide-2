@@ -11,7 +11,7 @@ void meow(int n) {
     }
 } //it is better do use a function prototype then whatever this is for example, you can declare the function prototype at the top of the file like this: void meow(void); and then define the function body later in the file. This way, you can call the function "meow" from anywhere in the file without having to worry about the order of the function definitions.
 void hello(void);
-int main(void) {
+int main(int argc, char* argv[]) {
     //if for some reason you want to compile this program run "make" in the terminal, and then run "./CS50" to execute the compiled program. This will allow you to see the output of the program and interact with it as needed.
     //week 1
     //======== C BASICS ========
@@ -413,14 +413,13 @@ int main(void) {
             printf("%c", toupper(s[i])); //this uses the toupper function from the ctype.h library to convert each character of the string "s" to uppercase when printing it. The toupper function takes a character as an argument and returns the uppercase version of that character if it is a lowercase letter, or returns the character unchanged if it is not a lowercase letter. This simplifies the code and improves readability by eliminating the need for manual checks and conversions for each character.
         }
     }
+    if (argc == 2) { //this checks if the number of command-line arguments passed to the program is equal to 2. The variable "argc" (argument count) represents the number of command-line arguments, including the program name itself. If this condition is true, it means that the user has provided exactly one additional argument (the first command-line argument after the program name), and we can proceed to print a greeting that includes that argument.
+        printf("hello, %s\n", argv[1]); //this prints a greeting that includes the first command-line argument passed to the program (argv[1]) followed by a newline character. The format specifier %s is used to indicate that argv[1] should be printed as a string. This allows us to greet the user based on the input they provide when running the program from the command line. (look at the top of the main function to see how command-line arguments work in C)
+    }
+    else {
+        printf("Hello, World!");
+    }
     //summary on strings in C: Strings in C are sequences of characters stored as arrays of char. They are null-terminated, meaning they end with a null character ('\0') to indicate the end of the string. You can manipulate strings using various functions from the C standard library, such as strlen (to get the length of a string), strcpy (to copy a string), strcat (to concatenate two strings), and toupper (to convert characters to uppercase). When working with strings, it's important to ensure that you have enough space in your arrays to store the characters and the null terminator, and to be mindful of potential issues such as buffer overflows when manipulating strings in C.
-
-
-
-
-
-
-
     return 0; //returns 0 to indicate that the program ended successfully
 }
 int average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
