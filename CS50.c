@@ -382,10 +382,29 @@ int main(void) {
     {
         string s = get_string("Input:  ");
         printf("Output: %s\n", s);
-        for (int i = 0; i < strlen(s); i++) {
-            printf("%c\n", s[i]);
+        for (int i = 0; i < strlen(s); i++) { //this is bad practice because it calls the strlen function in every iteration of the loop, which can be inefficient for long strings. A better approach would be to calculate the length of the string once and store it in a variable before the loop, like this: int length = strlen(s); for (int i = 0; i < length; i++) { printf("%c\n", s[i]); } This way, we avoid calling strlen multiple times and improve the efficiency of the loop.
+            printf("%c", s[i]);
         }
         printf("\n");
+    }//so we could do this instead:
+    {
+        string s = get_string("Input:  ");
+        printf("Output: %s\n", s);
+        for (int i = 0, n = strlen(s) ; i < n; i++) { //this is a for loop that will iterate through each character of the string "s" based on the length calculated earlier. The loop variable "i" starts at 0 and increments by 1 in each iteration. Inside the loop, it prints the character at index "i" of the string "s" followed by a newline character. This allows us to print each character of the string on a new line without having to call strlen multiple times.
+            printf("%c\n", s[i]);
+        }
+    }
+    {
+        string s = get_string("Before: ");
+        printf("After:  ");
+        for (int i = 0, n = strlen(s); i < n; i++) {
+            if (s[i] >= 'a' && s[i] <= 'z') { //this checks if the character at index "i" of the string "s" is a lowercase letter (between 'a' and 'z'). If this condition is true, it means that the character is a lowercase letter and we can convert it to uppercase by subtracting 32 from its ASCII value.
+                printf("%c", s[i] - 32); //this converts the lowercase letter at index "i" of the string "s" to uppercase by subtracting 32 from its ASCII value. This works because in the ASCII character encoding, the difference between lowercase and uppercase letters is 32. For example, the ASCII value of 'a' is 97, and the ASCII value of 'A' is 65, so subtracting 32 from 97 gives us 65, which corresponds to 'A'. This allows us to convert all lowercase letters in the string to uppercase when printing them.
+            }
+            else {
+                printf("%c", s[i]); //this prints the character at index "i" of the string "s" without modification if it is not a lowercase letter. This allows us to preserve any characters that are not lowercase letters while converting only the lowercase letters to uppercase.
+            }
+        }
     }
 
     //summary on strings in C: strings are just arrays of characters that are null-terminated. They can be manipulated using various functions from the C standard library, and they can be stored in arrays of strings for more complex data structures. When working with strings in C, it is important to ensure that they are properly null-terminated to avoid issues with string manipulation and memory management.
