@@ -427,6 +427,7 @@ int main(int argc, char* argv[]) {
     }
     //======== WEEK 3 ========
     //======== ALGORITHMS ========
+    //======== LINEAR SEARCH ========
     {
         int numbers[] = {20,500,10,5,100,1,50}; //this declares an array of integers called "numbers" and initializes it with the values 20, 500, 10, 5, 100, 1, and 50. This allows us to store multiple related values in a single variable and access them using an index.
         int n = get_int("Number: "); //this prompts the user to enter an integer and stores it in the variable "n". This allows us to read a number from the user that we want to search for in the "numbers" array.
@@ -461,7 +462,35 @@ int main(int argc, char* argv[]) {
 
 
         }
+        //this is bad practice for a phone book because it uses two separate arrays to store names and phone numbers, which can lead to issues with data integrity and maintenance. A better design would be to use a struct to represent a contact that contains both the name and the phone number, and then create an array of these structs to store the contacts. This way, we can ensure that each name is always associated with the correct phone number and improve code organization and readability. For example:
     }
+    {
+        typedef struct {
+            string name;
+            string number;
+        } contact; //this defines a struct called "contact" that contains two members: "name" and "number", both of which are strings. This allows us to represent a contact in our phone book with both the name and the phone number as part of a single data structure.
+
+        contact contacts[] = {
+            {"Jamie", "+44 123456789"},
+            {"David", "+44 987654321"},
+            {"Brandon", "+44 555555555"},
+            {"Kirsten", "+44 111111111"},
+            {"Emily", "+44 222222222"},
+            {"Sarah", "+44 333333333"}
+        }; //this declares an array of "contact" structs called "contacts" and initializes it with the values for each contact's name and phone number. This allows us to store multiple contacts in a single array and access their information using an index.
+
+        string name = get_string("Name: "); //this prompts the user to enter a name and stores it in the variable "name". This allows us to read a name from the user that we want to search for in the "contacts" array and retrieve the corresponding phone number.
+
+        for (int i = 0; i < sizeof(contacts)/sizeof(contact); i++) {
+            if (strcmp(contacts[i].name, name) == 0) {
+                //this checks if the "name" member of the "contact" struct at index "i" in the "contacts" array is equal to the string "name" that the user entered. The strcmp function from the C standard library is used to compare two strings and returns 0 if they are equal. If this condition is true, it means that we have found a match for the name in the array. We can then print the corresponding phone number from the "number" member of the same "contact" struct at index "i".
+                printf("Number: %s\n", contacts[i].number); //this prints "Number: X" to the console, where X is the phone number corresponding to the matching name in the "contacts" array at index "i". The format specifier %s is used to indicate that "contacts[i].number" should be printed as a string. This allows us to inform the user of the phone number associated with the name they entered after finding a match in the "contacts" array.
+                return 0; //this returns 0 to indicate that the program ended successfully after finding a match for the name and printing the corresponding phone number.
+            }
+        }
+    }
+
+    //======== BINARY SEARCH ========
     return 0; //returns 0 to indicate that the program ended successfully
 }
 double average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
