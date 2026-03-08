@@ -28,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CS50" beforeDir="false" afterPath="$PROJECT_DIR$/CS50" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CS50.c" beforeDir="false" afterPath="$PROJECT_DIR$/CS50.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +87,7 @@
   "keyToString": {
     "C/C++ File.CS50.c (1).executor": "Run",
     "C/C++ File.CS50.c.executor": "Run",
+    "C/C++ File.test.c (1).executor": "Run",
     "CMake Application.C_Refrence_Guide_2.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
@@ -102,7 +102,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/jamie/Nextcloud/Coding/github/C-Refrence-Guide-2",
+    "last_opened_file_path": "/home/jamie/Nextcloud/Coding/github/C-Refrence-Guide-2/test.c",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,7 +112,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="C/C++ File.CS50.c (1)">
+  <component name="RunManager" selected="C/C++ File.test.c (1)">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
@@ -121,6 +121,13 @@
     <configuration name="CS50.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="C-Refrence-Guide-2" TARGET_NAME="CS50.c (1)" CONFIG_NAME="CS50.c (1)">
       <option name="compilerOptions" value="-lcs50" />
       <option name="sourceFile" value="$PROJECT_DIR$/CS50.c" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="C-Refrence-Guide-2" TARGET_NAME="test.c (1)" CONFIG_NAME="test.c (1)">
+      <option name="compilerOptions" value="-lcs50" />
+      <option name="sourceFile" value="$PROJECT_DIR$/test.c" />
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
@@ -142,6 +149,7 @@
     </configuration>
     <list>
       <item itemvalue="C/C++ File.CS50.c (1)" />
+      <item itemvalue="C/C++ File.test.c (1)" />
       <item itemvalue="Shell Script.Unnamed" />
     </list>
   </component>
@@ -155,7 +163,7 @@
       <workItem from="1772486377775" duration="95000" />
       <workItem from="1772486515325" duration="6070000" />
       <workItem from="1772741588922" duration="16647000" />
-      <workItem from="1772971370167" duration="2267000" />
+      <workItem from="1772971370167" duration="2959000" />
     </task>
     <task id="LOCAL-00001" summary="this code is still under GPLV3">
       <option name="closed" value="true" />

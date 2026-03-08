@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 int get_n(void); //function prototype for the function "get_n", which will be defined later in the code. This allows us to call the function "get_n" from the main function before its actual definition, which can improve code organization and readability.
-int average(int n, int scores[]); //function prototype for the function "average", which will be defined later in the code. This allows us to call the function "average" from the main function before its actual definition, which can improve code organization and readability.
+double average(int n, int scores[]); //function prototype for the function "average", which will be defined later in the code. This allows us to call the function "average" from the main function before its actual definition, which can improve code organization and readability.
 void meow(int n) {
     //this is a function declaration for a function called "meow" that takes no parameters and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it simply prints "Meow!" to the console.
     for (int i = 0; i < n; i++) { //this is a for loop that will execute the block of code inside the curly braces {} a specific number of times. In this case, it will initialize "i" to 0, check if "i < n" is true, and if so, it will execute the block of code and then increment "i" by 1. This process will repeat until "i" is no longer less than "n".
@@ -449,16 +449,25 @@ int main(int argc, char* argv[]) {
         printf("Not Found!\n"); //this prints "Not Found!" to the console if we have iterated through the entire "strings" array and did not find a match for the string that the user entered. This indicates that the string is not present in the array.
     }
     {
-        string namess[] = {"Jamie", "David", "Brandon", "Kirsten", "Emily", "Sarah"}; //this declares an array of strings called "names" and initializes it with the values "Jamie", "David", "Brandon", "Kirsten", "Emily", and "Sarah". This allows us to store multiple related string values in a single variable and access them using an index.
+        string names[] = {"Jamie", "David", "Brandon", "Kirsten", "Emily", "Sarah"}; //this declares an array of strings called "names" and initializes it with the values "Jamie", "David", "Brandon", "Kirsten", "Emily", and "Sarah". This allows us to store multiple related string values in a single variable and access them using an index.
         string numbers[] = {"+44 123456789", "+44 987654321", "+44 555555555", "+44 111111111", "+44 222222222", "+44 333333333"}; //this declares an array of strings called "numbers" and initializes it with the values "+44 123456789", "+44 987654321", "+44 555555555", "+44 111111111", "+44 222222222", and "+44 333333333". This allows us to store multiple related string values in a single variable and access them using an index.
-        
+        string name = get_string("Name: "); //this prompts the user to enter a name and stores it in the variable "name". This allows us to read a name from the user that we want to search for in the "names" array and retrieve the corresponding phone number from the "numbers" array.
+        for (int i = 0; i < sizeof(names)/sizeof(string); i++) {
+            if (strcmp(names[i], name) == 0 ) { //this checks if the string at index "i" in the "names" array is equal to the string "name" that the user entered. The strcmp function from the C standard library is used to compare two strings and returns 0 if they are equal. If this condition is true, it means that we have found a match for the name in the array. We can then print the corresponding phone number from the "numbers" array at the same index "i".
+                printf("Number: %s\n", numbers[i]); //this prints "Number: X" to the console, where X is the phone number corresponding to the matching name in the "numbers" array at index "i". The format specifier %s is used to indicate that "numbers[i]" should be printed as a string. This allows us to inform the user of the phone number associated with the name they entered after finding a match in the "names" array.
+                return 0; //this returns 0 to indicate that the program ended successfully after finding a match for the name and printing the corresponding phone number.
+            }
+            printf("Error 404: Name not found!\n"); //this prints "Error 404: Name not found!" to the console if we have iterated through the entire "names" array and did not find a match for the name that the user entered. This indicates that the name is not present in the array.
 
+
+        }
     }
     return 0; //returns 0 to indicate that the program ended successfully
 }
-int average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
+double average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
     int sum = 0; //this declares an integer variable called "sum" and initializes it with the value 0. This variable will be used to accumulate the sum of all the scores in the "scores" array.
-    for (int i = 0; i < n; i++) { //this is a for loop that will execute "n" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "n". Inside the loop, it adds the score at index "i" in the "scores" array to the "sum" variable. This allows us to calculate the total sum of all the scores in the array based on the number of scores passed as a parameter to the function.
+    for (int i = 0; i < n; i++) {
+        //this is a for loop that will execute "n" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "n". Inside the loop, it adds the score at index "i" in the "scores" array to the "sum" variable. This allows us to calculate the total sum of all the scores in the array based on the number of scores passed as a parameter to the function.
         sum += scores[i]; //this adds the score at index "i" in the "scores" array to the "sum" variable. This is a shorthand way of writing "sum = sum + scores[i];" and is commonly used in C to update the value of a variable based on its current value.
     }
     return (float)sum / n; //this calculates the average of the scores by dividing the total "sum" of the scores by "n" (the number of scores). The result is cast to a float to ensure that the division is performed as floating-point division, which allows for a more accurate result with decimal places. The calculated average is then returned as a float to the caller of the function.
