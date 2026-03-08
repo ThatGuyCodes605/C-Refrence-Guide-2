@@ -13,7 +13,7 @@ void meow(int n) {
 void hello(void);
 int main(int argc, char* argv[]) {
     //if for some reason you want to compile this program run "make" in the terminal, and then run "./CS50" to execute the compiled program. This will allow you to see the output of the program and interact with it as needed.
-    //week 1
+    //======== WEEK 1 ========
     //======== C BASICS ========
     printf("hello, world\n"); //prints "hello, world" to the console
     printf("hello, world"); //prints "hello, world" to the console without a newline character at the end
@@ -294,7 +294,7 @@ int main(int argc, char* argv[]) {
 
         }
     } //End Of Scope
-    //week 2:
+    //======== WEEK 2 ========
     //bool - 1 byte, can be true or false
     //int - 4 bytes, can store whole numbers from -2,147,483,648 to 2,147,483,647
     //long - 8 bytes, can store whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
@@ -425,7 +425,35 @@ int main(int argc, char* argv[]) {
         printf("Error: Missing command-line argument.\n"); //this checks if the number of command-line arguments passed to the program is not equal to 2. If this condition is true, it means that the user has not provided exactly one additional argument (the first command-line argument after the program name), and we can print a warning message to the console indicating that a command-line argument is missing. The format specifier %s is used to indicate that the message should be printed as a string.
         return 1; //this returns 1 to indicate that the program ended with an error due to the missing command-line argument. In C, returning a non-zero value from the main function typically indicates that the program encountered an error or did not execute successfully. By returning 1, we can signal to the operating system or any calling processes that the program did not complete as expected due to the missing command-line argument.
     }
+    //======== WEEK 3 ========
+    //======== ALGORITHMS ========
+    {
+        int numbers[] = {20,500,10,5,100,1,50}; //this declares an array of integers called "numbers" and initializes it with the values 20, 500, 10, 5, 100, 1, and 50. This allows us to store multiple related values in a single variable and access them using an index.
+        int n = get_int("Number: "); //this prompts the user to enter an integer and stores it in the variable "n". This allows us to read a number from the user that we want to search for in the "numbers" array.
 
+        for (int i = 0; i < sizeof(n)/sizeof(int); i++) {
+            if (numbers[i] == n) { //this checks if the value at index "i" in the "numbers" array is equal to the value of "n" that the user entered. If this condition is true, it means that we have found a match for the number in the array.
+                printf("Found at index %i\n", i); //this prints "Found at index X" to the console, where X is the index of the matching number in the "numbers" array. The format specifier %i is used to indicate that "i" should be printed as an integer. This allows us to inform the user that we have found a match for the number they entered and provide the index where it was found in the array.
+                return 0; //this returns 0 to indicate that the program ended successfully after finding a match for the number in the array.
+            }
+        }
+        printf("Not Found!\n"); //this prints "Not Found!" to the console if we have iterated through the entire "numbers" array and did not find a match for the number that the user entered. This indicates that the number is not present in the array.
+        string strings[] = {"battleship", "boot", "cannon", "iron", "thimble", "top hat"}; //this declares an array of strings called "strings" and initializes it with the values "battleship", "boot", "cannon", "iron", "thimble", and "top hat". This allows us to store multiple related string values in a single variable and access them using an index.
+        string s = get_string("String: "); //this prompts the user to enter a string and stores it in the variable "s". This allows us to read a string from the user that we want to search for in the "strings" array.
+        for (int i = 0; i < sizeof(strings)/sizeof(string); i++) {
+            if (strcmp(strings[i], s) == 0) { //this checks if the string at index "i" in the "strings" array is equal to the string "s" that the user entered. The strcmp function from the C standard library is used to compare two strings and returns 0 if they are equal. If this condition is true, it means that we have found a match for the string in the array. We need to use strcmp to compare strings in C because the == operator does not work for string comparison, as it compares the memory addresses of the strings rather than their contents. Using strcmp allows us to compare the actual characters in the strings and determine if they are equal.
+                printf("Found at index %i\n", i); //this prints "Found at index X" to the console, where X is the index of the matching string in the "strings" array. The format specifier %i is used to indicate that "i" should be printed as an integer. This allows us to inform the user that we have found a match for the string they entered and provide the index where it was found in the array.
+                return 0; //this returns 0 to indicate that the program ended successfully after finding a match for the string in the array.
+            }
+        }
+        printf("Not Found!\n"); //this prints "Not Found!" to the console if we have iterated through the entire "strings" array and did not find a match for the string that the user entered. This indicates that the string is not present in the array.
+    }
+    {
+        string namess[] = {"Jamie", "David", "Brandon", "Kirsten", "Emily", "Sarah"}; //this declares an array of strings called "names" and initializes it with the values "Jamie", "David", "Brandon", "Kirsten", "Emily", and "Sarah". This allows us to store multiple related string values in a single variable and access them using an index.
+        string numbers[] = {"+44 123456789", "+44 987654321", "+44 555555555", "+44 111111111", "+44 222222222", "+44 333333333"}; //this declares an array of strings called "numbers" and initializes it with the values "+44 123456789", "+44 987654321", "+44 555555555", "+44 111111111", "+44 222222222", and "+44 333333333". This allows us to store multiple related string values in a single variable and access them using an index.
+        
+
+    }
     return 0; //returns 0 to indicate that the program ended successfully
 }
 int average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.

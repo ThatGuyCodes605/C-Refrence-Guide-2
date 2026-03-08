@@ -26,7 +26,9 @@
   <component name="ChangeListManager">
     <list default="true" id="23a2fa66-ab0d-43df-92d2-2bc87c7d93ee" name="Changes" comment="this code is still under GPLV3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS50" beforeDir="false" afterPath="$PROJECT_DIR$/CS50" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CS50.c" beforeDir="false" afterPath="$PROJECT_DIR$/CS50.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +42,7 @@
     <persistenceIdMap>
       <entry key="_/home/jamie/C-Refrence-Guide-2" value="3APFcHno9cWTZZBEi8dxoFVSRXV" />
       <entry key="_/home/jamie/Coding/github/C-Refrence-Guide-2/.idea" value="3AXatxUDPYwYkLHJVYbfowSyj3Y" />
+      <entry key="_/home/jamie/Nextcloud/Coding/github/C-Refrence-Guide-2" value="3Af6ej3opWnln4OKshhB9NmBqRm" />
     </persistenceIdMap>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
@@ -99,7 +102,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/jamie/Coding/github/C-Refrence-Guide-2",
+    "last_opened_file_path": "/home/jamie/Nextcloud/Coding/github/C-Refrence-Guide-2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -110,9 +113,9 @@
   }
 }]]></component>
   <component name="RunManager" selected="C/C++ File.CS50.c (1)">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="CS50.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="C-Refrence-Guide-2" TARGET_NAME="CS50.c (1)" CONFIG_NAME="CS50.c (1)">
@@ -151,7 +154,8 @@
       <updated>1772486376779</updated>
       <workItem from="1772486377775" duration="95000" />
       <workItem from="1772486515325" duration="6070000" />
-      <workItem from="1772741588922" duration="15566000" />
+      <workItem from="1772741588922" duration="16647000" />
+      <workItem from="1772971370167" duration="2267000" />
     </task>
     <task id="LOCAL-00001" summary="this code is still under GPLV3">
       <option name="closed" value="true" />
