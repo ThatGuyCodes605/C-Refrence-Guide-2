@@ -15,6 +15,8 @@ void meow(int n) {
 void hello(void);
 void draw_iteration(int n);
 void draw_recursive(int n);
+void badswap(int a, int b);
+void pointerswap(int* a, int* b);
 int main(int argc, char* argv[]) {
     //if for some reason you want to compile this program run "make" in the terminal, and then run "./CS50" to execute the compiled program. This will allow you to see the output of the program and interact with it as needed.
     //======== WEEK 1 ========
@@ -599,6 +601,19 @@ int main(int argc, char* argv[]) {
             printf("%d\n", scores[i]); //this prints the value of each element in the "scores" array to the console. Since the "scores" array is declared but not initialized, it may contain garbage values, which are random values that happen to be in the memory locations allocated for the array. This means that the output of this loop can be unpredictable and may vary each time the program is run, as it could print any arbitrary values depending on what happens to be in those memory locations at the time.
         }
     }
+    //======== MORE ON POINTERS ========
+    {
+        int x = 1;
+        int y = 2;
+        printf("%d\n", x);
+        printf("%d\n", y);
+        badswap(x,y);
+        printf("%d\n", x);
+        printf("%d\n", y);
+        pointerswap(&x, &y);
+        printf("%d\n", x);
+        printf("%d\n", y);
+    }
 
     return 0; //returns 0 to indicate that the program ended successfully
 }
@@ -640,4 +655,14 @@ void draw_recursive(int n) { //this is a function declaration for a function cal
         printf("#");
     }
     printf("\n");
+}
+void badswap(int a, int b) {
+    int temp = a; //this declares an integer variable called "temp" and initializes it with the value of "a". This variable will be used to temporarily store the value of "a" during the swap process.
+    a = b; //this assigns the value of "b" to "a", effectively overwriting the original value of "a". At this point, "a" now holds the value that was originally in "b".
+    b = temp; //this assigns the value stored in "temp" (which is the original value of "a") to "b". This completes the swap by giving "b" the original value of "a", while "a" now has the original value of "b". However, this function will not actually swap the values of "a" and "b" outside of this function because "a" and "b" are passed by value, meaning that the function receives copies of the original variables. To properly swap the values of two integers in C, we would need to use pointers to pass the addresses of the variables and modify the values at those addresses. For example we could declare the function as "void swap(int *a, int *b)" and then use dereferencing to swap the values at the memory addresses pointed to by "a" and "b".
+}
+void pointerswap(int *a, int *b) {
+    int temp = *a; //this declares an integer variable called "temp" and initializes it with the value pointed to by "a". The * operator is used to dereference the pointer "a", which means it accesses the value stored at the memory address that "a" points to. This allows us to temporarily store the value of "a" before we overwrite it with the value of "b".
+    *a = *b; //this assigns the value pointed to by "b" to the location pointed to by "a". The * operator is used to dereference both pointers, allowing us to access and modify the values stored at those memory addresses. This effectively assigns the value of "b" to "a", overwriting the original value of "a".
+    *b = temp; //this assigns the value stored in the temporary variable "temp" (which holds the original value of "a") to the location pointed to by "b". The * operator is used to dereference the pointer "b", allowing us to access and modify the value stored at that memory address. This completes the swap by assigning the original value of "a" (stored in "temp") to "b".
 }
