@@ -27,7 +27,6 @@
     <list default="true" id="23a2fa66-ab0d-43df-92d2-2bc87c7d93ee" name="Changes" comment="this code is still under GPLV3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CS50.c" beforeDir="false" afterPath="$PROJECT_DIR$/CS50.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +101,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jamie/Nextcloud/Coding/github/C-Refrence-Guide-2/test.c&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jamie/Nextcloud/Coding/github&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -113,9 +112,9 @@
   }
 }</component>
   <component name="RunManager" selected="C/C++ File.test.c (1)">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="CS50.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="C-Refrence-Guide-2" TARGET_NAME="CS50.c (1)" CONFIG_NAME="CS50.c (1)">
@@ -164,7 +163,9 @@
       <workItem from="1772486515325" duration="6070000" />
       <workItem from="1772741588922" duration="16647000" />
       <workItem from="1772971370167" duration="8002000" />
-      <workItem from="1773480026842" duration="7477000" />
+      <workItem from="1773480026842" duration="7556000" />
+      <workItem from="1773488331189" duration="13000" />
+      <workItem from="1773496191284" duration="2633000" />
     </task>
     <task id="LOCAL-00001" summary="this code is still under GPLV3">
       <option name="closed" value="true" />
