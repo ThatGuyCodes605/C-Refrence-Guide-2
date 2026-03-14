@@ -2,6 +2,8 @@
 #include <cs50.h> //CS50 library, which provides additional functions for working with strings, files, and other data types
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
+
 int get_n(void); //function prototype for the function "get_n", which will be defined later in the code. This allows us to call the function "get_n" from the main function before its actual definition, which can improve code organization and readability.
 double average(int n, int scores[]); //function prototype for the function "average", which will be defined later in the code. This allows us to call the function "average" from the main function before its actual definition, which can improve code organization and readability.
 void meow(int n) {
@@ -558,6 +560,43 @@ int main(int argc, char* argv[]) {
         }
         else {
             printf("Not Equal!\n"); //this prints "Not Equal!" to the console if the condition in the if statement (i == j) is false, indicating that the values of "i" and "j" are not equal. In this case, since both "i" and "j" are initialized with the same value of 50, this message will not be printed when the program runs.).
+        }
+        //======= MEMORY MANAGEMENT =======
+        //in C, we have to manage memory manually, which means we need to allocate and free memory ourselves. This is done using functions like malloc (to allocate memory) and free (to free allocated memory). When we allocate memory using malloc, it returns a pointer to the allocated memory, and we can use this pointer to access and manipulate the memory. However, it is important to remember to free any allocated memory when we are done using it to avoid memory leaks, which can lead to inefficient use of memory and potential crashes in larger programs. Proper memory management is crucial in C programming to ensure that our programs run efficiently and do not consume more memory than necessary. It also helps prevent bugs and security vulnerabilities that can arise from improper memory handling, such as buffer overflows or dangling pointers.
+        {
+            char* s;
+            fgets(s, sizeof(s), stdin); //this attempts to read a string from standard input (stdin) and store it in the memory location pointed to by "s". However, this code is incorrect because "s" is an uninitialized pointer, which means it does not point to a valid memory location where the input can be stored. This can lead to undefined behavior, such as crashing the program or overwriting other parts of memory. To fix this, we need to allocate memory for "s" before using it with fgets, for example by using malloc to allocate a buffer of sufficient size to hold the input string.
+            if (s == NULL) {
+                printf("Error reading input!\n");
+                return 1; //this returns 1 to indicate that the program ended with an error due to a failure in reading input. In C, returning a non-zero value from the main function typically indicates that the program encountered an error or did not execute successfully. By returning 1, we can signal to the operating system or any calling processes that the program did not complete as expected due to an issue with reading input.
+            }
+            char* t = malloc(strlen(s) + 1);
+            if (t == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1; //this returns 1 to indicate that the program ended with an error due to memory allocation failure. In C, returning a non-zero value from the main function typically indicates that the program encountered an error or did not execute successfully. By returning 1, we can signal to the operating system or any calling processes that the program did not complete as expected due to the memory allocation failure.
+            }
+            strcpy(t, s);
+            free(t);
+        }
+        {
+            int *x = malloc(3*sizeof(int));
+            if (x == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1; //this returns 1 to indicate that the program ended with an error due to memory allocation failure. In C, returning a non-zero value from the main function typically indicates that the program encountered an error or did not execute successfully. By returning 1, we can signal to the operating system or any calling processes that the program did not complete as expected due to the memory allocation failure.
+            }
+            x[0] = 72;
+            x[1] = 73;
+            x[2] = 33;
+            free(x);
+        }
+    }
+    //======== GARBAGE VALUES ========
+    {
+        int x; //this declares an integer variable called "x" without initializing it. In C, uninitialized variables can contain garbage values, which are random values that happen to be in the memory location allocated for "x". This means that if we try to use the value of "x" before assigning it a specific value, we may get unpredictable results, as it could contain any arbitrary value. It is important to always initialize variables in C to avoid using garbage values and ensure that our program behaves as expected.
+        printf("%d\n", x); //this prints the value of the uninitialized variable "x" to the console. Since "x" is uninitialized, it may contain a garbage value, which is a random value that happens to be in the memory location allocated for "x". This means that the output of this line can be unpredictable and may vary each time the program is run, as it could print any arbitrary value depending on what happens to be in that memory location at the time.
+        int scores[1024];
+        for (int i = 0; i < 1024; i++) {
+            printf("%d\n", scores[i]); //this prints the value of each element in the "scores" array to the console. Since the "scores" array is declared but not initialized, it may contain garbage values, which are random values that happen to be in the memory locations allocated for the array. This means that the output of this loop can be unpredictable and may vary each time the program is run, as it could print any arbitrary values depending on what happens to be in those memory locations at the time.
         }
     }
 
