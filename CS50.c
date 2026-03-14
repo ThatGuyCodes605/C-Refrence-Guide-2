@@ -614,7 +614,24 @@ int main(int argc, char* argv[]) {
         printf("%d\n", x);
         printf("%d\n", y);
     }
+    {
+        int n = get_int("What number? ");
+        //now time to take off the training wheels for get_int
+        //time to use SCANF
+        int x;
+        printf("what number? ");
+        scanf("%d", &x);
+        printf("You entered: %d\n", x);
+        //for strings we can use fgets instead of scanf to avoid buffer overflow issues. fgets allows us to specify a maximum width for the input, which helps prevent writing beyond the bounds of the array. For example:
+        char s[100]; //this declares a character array called "s" with a size of 100. This means that "s" can hold up to 99 characters plus a null terminator ('\0') to indicate the end of the string. This allows us to safely read a string input from the user without risking buffer overflow, as we can specify a maximum width for the input when using scanf.
+        printf("What string? ");
+        fgets(s, 100, stdin);
+        printf("You entered: %s\n", s);
+    }
+    //======== FILE I/O ========
+    {
 
+    }
     return 0; //returns 0 to indicate that the program ended successfully
 }
 double average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
