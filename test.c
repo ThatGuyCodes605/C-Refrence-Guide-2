@@ -1,18 +1,9 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <cs50.h>
+int swap(int *a, int *b) { //this is a function declaration for a function called "swap" that takes two parameters: pointers to integers "a" and "b". The function returns an integer, but in this case, it does not actually return any value (it should be declared as void instead). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it swaps the values of the integers pointed to by "a" and "b" using a temporary variable "temp". This allows us to exchange the values of two integers in memory by passing their addresses to the function.
+    int temp = *a; //this declares an integer variable called "temp" and initializes it with the value pointed to by "a". The * operator is used to dereference the pointer "a", which means it accesses the value stored at the memory address that "a" points to. This allows us to temporarily store the value of "a" before we overwrite it with the value of "b".
+    *a = *b; //this assigns the value pointed to by "b" to the location pointed to by "a". The * operator is used to dereference both pointers, allowing us to access and modify the values stored at those memory addresses. This effectively assigns the value of "b" to "a", overwriting the original value of "a".
+    *b = temp; //this assigns the value stored in the temporary variable "temp" (which holds the original value of "a") to the location pointed to by "b". The * operator is used to dereference the pointer "b", allowing us to access and modify the value stored at that memory address. This completes the swap by assigning the original value of "a" (stored in "temp") to "b".
+}
 int main(void) {
-     string names[] = {"Jamie", "David", "Brandon", "Kirsten", "Emily", "Sarah"}; //this declares an array of strings called "names" and initializes it with the values "Jamie", "David", "Brandon", "Kirsten", "Emily", and "Sarah". This allows us to store multiple related string values in a single variable and access them using an index.
-        string numbers[] = {"+44 123456789", "+44 987654321", "+44 555555555", "+44 111111111", "+44 222222222", "+44 333333333"}; //this declares an array of strings called "numbers" and initializes it with the values "+44 123456789", "+44 987654321", "+44 555555555", "+44 111111111", "+44 222222222", and "+44 333333333". This allows us to store multiple related string values in a single variable and access them using an index.
-        string name = get_string("Name: "); //this prompts the user to enter a name and stores it in the variable "name". This allows us to read a name from the user that we want to search for in the "names" array and retrieve the corresponding phone number from the "numbers" array.
-        for (int i = 0; i < sizeof(names)/sizeof(string); i++) {
-            if (strcmp(names[i], name) == 0 ) { //this checks if the string at index "i" in the "names" array is equal to the string "name" that the user entered. The strcmp function from the C standard library is used to compare two strings and returns 0 if they are equal. If this condition is true, it means that we have found a match for the name in the array. We can then print the corresponding phone number from the "numbers" array at the same index "i".
-                printf("Number: %s\n", numbers[i]); //this prints "Number: X" to the console, where X is the phone number corresponding to the matching name in the "numbers" array at index "i". The format specifier %s is used to indicate that "numbers[i]" should be printed as a string. This allows us to inform the user of the phone number associated with the name they entered after finding a match in the "names" array.
-                return 0; //this returns 0 to indicate that the program ended successfully after finding a match for the name and printing the corresponding phone number.
-            }
-            printf("Error 404: Name not found!\n"); //this prints "Error 404: Name not found!" to the console if we have iterated through the entire "names" array and did not find a match for the name that the user entered. This indicates that the name is not present in the array.
 
-
-        }
 }

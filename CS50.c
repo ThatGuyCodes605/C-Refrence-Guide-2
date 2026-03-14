@@ -510,11 +510,15 @@ int main(int argc, char* argv[]) {
 
     }
     //======== POINTERS ========
-
     {
-        printf("Hello, world!\n"); //this prints "Hello, world!" to the console followed by a newline character
-    }
+        int n = 50; //this declares an integer variable called "n" and initializes it with the value 50. This variable can be used to store and manipulate integer values in the program.
+        int *p = &n; //this declares a pointer variable called "p" that is of type "int*" (pointer to an integer) and initializes it with the address of the variable "n". The & operator is used to get the address of a variable in C. This allows us to create a pointer that points to the memory location where "n" is stored, which can be useful for understanding how pointers work in C and for manipulating the value of "n" indirectly through the pointer.
+        printf("%d\n", n); //this prints the value of the variable "n" to the console. The format specifier %d is used to indicate that "n" should be printed as an integer. The output will be 50 followed by a newline character.
+        printf("%p\n", &n); //this prints the memory address of the variable "n" to the console. The & operator is used to get the address of a variable in C. This allows us to see where the variable "n" is stored in memory, which can be useful for understanding how variables and memory work in C.
+        printf("%p\n", p); //this prints the value of the pointer variable "p" to the console, which is the memory address that it points to (the address of "n"). The format specifier %p is used to indicate that "p" should be printed as a pointer (memory address). This allows us to see that "p" indeed points to the same memory address as "&n", confirming that it is correctly initialized as a pointer to "n".
+        printf("%d\n", *p); //this prints the value at the memory address that the pointer "p" is pointing to, which is the value of "n". The * operator is used to dereference the pointer, meaning it accesses the value stored at the memory address that "p" points to. The format specifier %d is used to indicate that the dereferenced value should be printed as an integer. The output will be 50 followed by a newline character, confirming that dereferencing "p" gives us the value of "n".
 
+    }
     return 0; //returns 0 to indicate that the program ended successfully
 }
 double average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
