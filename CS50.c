@@ -11,6 +11,8 @@ void meow(int n) {
     }
 } //it is better do use a function prototype then whatever this is for example, you can declare the function prototype at the top of the file like this: void meow(void); and then define the function body later in the file. This way, you can call the function "meow" from anywhere in the file without having to worry about the order of the function definitions.
 void hello(void);
+void draw_iteration(int n);
+void draw_recursive(int n);
 int main(int argc, char* argv[]) {
     //if for some reason you want to compile this program run "make" in the terminal, and then run "./CS50" to execute the compiled program. This will allow you to see the output of the program and interact with it as needed.
     //======== WEEK 1 ========
@@ -489,8 +491,30 @@ int main(int argc, char* argv[]) {
             }
         }
     }
+    //======== ITERATION AND RECURSION =========
+    {
+        int height = get_int("Height: ");
+        draw_iteration(height);
+    }
+    {
+        int height = get_int("Height: ");
+        draw_recursive(height);
+    }
 
-    //======== BINARY SEARCH ========
+    //======== WEEK 4 ========
+    //okay its finally time to take off the training wheels (which was the CS50 library) and talk about pointers and memory management in C.
+    {
+        int n = 50; //this declares an integer variable called "n" and initializes it with the value 50. This variable can be used to store and manipulate integer values in the program.
+        printf("%d\n", n);
+        printf("%p\n", &n); //this prints the memory address of the variable "n" to the console. The & operator is used to get the address of a variable in C. This allows us to see where the variable "n" is stored in memory, which can be useful for understanding how variables and memory work in C.
+
+    }
+    //======== POINTERS ========
+
+    {
+        printf("Hello, world!\n"); //this prints "Hello, world!" to the console followed by a newline character
+    }
+
     return 0; //returns 0 to indicate that the program ended successfully
 }
 double average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
@@ -513,4 +537,22 @@ int get_n(void) {
         }
     } while (n <= 0); //this is a do-while loop that will execute the block of code inside the curly braces {} at least once and then check the condition at the end of the loop. This way, you can ensure that the user is prompted for input at least once and that the loop will continue to execute until a valid input is received. Inside the loop, it prompts the user to enter an integer and stores it in the variable "n". Then, it checks if the value of "n" is less than or equal to 0. If this condition is true, it will print "Please enter a positive integer." to the console and continue the loop, prompting the user to enter a new value for "n". If this condition is false, it will break out of the loop and proceed to return the value of "n".
     return n; //this returns the value of "n" to the caller of the function, which can be used in other parts of the code. This allows you to separate the logic for getting a valid input from the user into its own function, which can improve code organization and readability.
+}
+void draw_iteration(int n) { //this is a function declaration for a function called "draw" that takes an integer parameter "n" and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it uses nested loops to draw a pattern of hashes (#) based on the value of "n".
+    for (int i = 0; i < n; i++) { //this is the outer loop that will execute "n" times, where "i" is the loop variable that starts at 0 and increments by 1 until it reaches "n". This loop controls the number of rows in the pattern.
+        for (int j = 0; j <= i; j++) { //this is the inner loop that will execute "i + 1" times for each iteration of the outer loop, where "j" is the loop variable that starts at 0 and increments by 1 until it reaches "i". This loop controls the number of hashes (#) printed in each row, which increases by one for each subsequent row.
+            printf("#"); //this prints a hash character (#) to the console without a newline. This allows us to print multiple hashes on the same line based on the current iteration of the inner loop.
+        }
+        printf("\n"); //this prints a newline character after each iteration of the outer loop, which moves the cursor to the next line. This allows us to create a new row in the pattern after printing the appropriate number of hashes for each row.
+    }
+}
+void draw_recursive(int n) { //this is a function declaration for a function called "draw_recursive" that takes two integer parameters "n" and "i", and returns void (no value). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it uses recursion to draw a pattern of hashes (#) based on the value of "n".
+    if (n <= 0) { //this checks if the value of "n" is less than or equal to 0. If this condition is true, it means that we have reached the base case of the recursion, and we can return from the function without doing anything further. This serves as the stopping point for the recursive calls and prevents infinite recursion.
+        return; //this returns from the function when the base case is reached, which allows us to stop the recursion and prevent infinite calls to the function.
+    }
+    draw_recursive(n - 1); //this is normally bad practice because if you give it to big of a number it crashes this would not happen in iteration
+    for (int i = 0; i < n; i++) {
+        printf("#");
+    }
+    printf("\n");
 }
