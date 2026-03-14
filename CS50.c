@@ -630,7 +630,18 @@ int main(int argc, char* argv[]) {
     }
     //======== FILE I/O ========
     {
-
+        FILE *file = fopen("phonebook.csv", "w"); //this opens a file called "phonebook.csv" in write mode ("w") and returns a pointer to the file, which is stored in the variable "file". If the file does not exist, it will be created. If the file already exists, it will be truncated (emptied) before writing. This allows us to write data to the file using the file pointer.
+        if (file == NULL) {
+            //this checks if the file pointer "file" is NULL, which would indicate that the file could not be opened successfully. If this condition is true, it means that there was an error opening the file (e.g., due to permissions issues, disk space limitations, or an invalid file path), and we can handle this error accordingly (e.g., by printing an error message and exiting the program).
+            printf("Error opening file!\n"); //this prints "Error opening file!" to the console if the file pointer "file" is NULL, indicating that there was an error opening the file. This allows us to inform the user of the issue and potentially take corrective action, such as checking the file path or permissions.
+            return 1; //this returns 1 to indicate that the program ended with an error due to a failure in opening the file. In C, returning a non-zero value from the main function typically indicates that the program encountered an error or did not execute successfully. By returning 1, we can signal to the operating system or any calling processes that the program did not complete as expected due to the file opening error.
+        }
+        char* name;
+        fgets(name, sizeof(name), file);
+        char* number;
+        fgets(number, sizeof(number), file);
+        fprintf(file, "%s,%s\n", name, number); //this writes the name and number to the file in CSV format (comma-separated values) using the fprintf function. The format specifier %s is used to indicate that "name" and "number" should be printed as strings. This allows us to store the contact information in a structured format that can be easily read and processed later. After writing to the file, we should also remember to close the file using fclose(file) to ensure that all data is properly saved and resources are released.
+        fclose(file);
     }
     return 0; //returns 0 to indicate that the program ended successfully
 }
