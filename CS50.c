@@ -46,7 +46,8 @@ int main(int argc, char* argv[]) {
     //cp - copies a file or directory
     //mv - moves or renames a file or directory
     //======== IF STATEMENTS ========
-    int x = 5;
+    int x = 5
+;
     int y = 10;
     if (x < y) {
         printf("x is less than y\n");
@@ -629,8 +630,9 @@ int main(int argc, char* argv[]) {
         printf("You entered: %s\n", s);
     }
     //======== FILE I/O ========
+    //appending to a file
     {
-        FILE *file = fopen("phonebook.csv", "w"); //this opens a file called "phonebook.csv" in write mode ("w") and returns a pointer to the file, which is stored in the variable "file". If the file does not exist, it will be created. If the file already exists, it will be truncated (emptied) before writing. This allows us to write data to the file using the file pointer.
+        FILE *file = fopen("phonebook.csv", "a"); //this opens a file called "phonebook.csv" in write mode ("w") and returns a pointer to the file, which is stored in the variable "file". If the file does not exist, it will be created. If the file already exists, it will be truncated (emptied) before writing. This allows us to write data to the file using the file pointer.
         if (file == NULL) {
             //this checks if the file pointer "file" is NULL, which would indicate that the file could not be opened successfully. If this condition is true, it means that there was an error opening the file (e.g., due to permissions issues, disk space limitations, or an invalid file path), and we can handle this error accordingly (e.g., by printing an error message and exiting the program).
             printf("Error opening file!\n"); //this prints "Error opening file!" to the console if the file pointer "file" is NULL, indicating that there was an error opening the file. This allows us to inform the user of the issue and potentially take corrective action, such as checking the file path or permissions.
@@ -643,6 +645,88 @@ int main(int argc, char* argv[]) {
         fprintf(file, "%s,%s\n", name, number); //this writes the name and number to the file in CSV format (comma-separated values) using the fprintf function. The format specifier %s is used to indicate that "name" and "number" should be printed as strings. This allows us to store the contact information in a structured format that can be easily read and processed later. After writing to the file, we should also remember to close the file using fclose(file) to ensure that all data is properly saved and resources are released.
         fclose(file);
     }
+    //copying a file
+    {
+        typedef unsigned char BYTE;
+        FILE *src = fopen(argv[2], "rb");
+        FILE *dst = fopen(argv[3], "wb");
+        BYTE b;
+        while (fread(&b,sizeof(b),1,src) != 0) {
+            fwrite(&b,sizeof(b),1,dst);
+        }
+        fclose(src);
+        fclose(dst);
+    }
+    //======== WEEK 5 ========
+    //======= ABSTRACT DATA TYPES ========
+    const int CAPACITY = 50; //this declares a constant integer variable called "CAPACITY" and initializes it with the value 50. This variable can be used to define the maximum capacity of a data structure, such as an array or a stack, to ensure that we do not exceed the allocated memory and cause issues like buffer overflows. By using a constant, we can easily change the capacity in one place if needed, and it also improves code readability by giving a meaningful name to the value.
+    typedef struct{
+        int people[CAPACITY];
+        int size;
+    } queue; //this defines a struct called "queue" that contains an array of "person" structs with a maximum capacity defined by the constant "CAPACITY", and an integer "size" to keep track of the current number of people in the queue. This allows us to represent a queue data structure that can hold a certain number of people and keep track of how many people are currently in the queue. The "person" struct would need to be defined separately to represent the individual people in the queue, and we can then use the "queue" struct to manage the collection of people and perform operations such as enqueueing and dequeueing.
+    typedef struct {
+        int people[CAPACITY];
+        int size;
+    } stack; //this defines a struct called "stack" that contains an array of "person" structs with a maximum capacity defined by the constant "CAPACITY", and an integer "size" to keep track of the current number of people in the stack. This allows us to represent a stack data structure that can hold a certain number of people and keep track of how many people are currently in the stack. The "person" struct would need to be defined separately to represent the individual people in the stack, and we can then use the "stack" struct to manage the collection of people and perform operations such as pushing and popping.
+    {
+        int list[3]; //this declares an array of integers called "list" with a size of 3. This means that "list" can hold up to 3 integer values, which can be accessed using array indexing (e.g., list[0], list[1], list[2]). This allows us to store and manipulate a small collection of integer values in our program. 
+        list[0] = 1; //this assigns the value 1 to the first element of the "list" array (index 0). This means that list[0] now holds the value 1, and we can access it using list[0] in our program.
+        list[1] = 2; //this assigns the value 2 to the second element of the "list" array (index 1). This means that list[1] now holds the value 2, and we can access it using list[1] in our program.
+        list[2] = 3; //this assigns the value 3 to the third element of the "list" array (index 2). This means that list[2] now holds the value 3, and we can access it using list[2] in our program.
+        for (int i = 0; i<3; i++) {
+            printf("%d\n", list[i]); //this prints the value of each element in the "list" array to the console. The format specifier %d is used to indicate that each element should be printed as an integer. This allows us to see the values stored in the "list" array, which are 1, 2, and 3, each followed by a newline character.
+        } //this is bad practice because it hardcodes the size of the array (3) in multiple places, which can lead to issues if we want to change the size of the array later. A better approach would be to define a constant for the size of the array and use that constant in both the declaration and the loop, like this:
+    }
+    int *list = malloc(3 * sizeof(int)); //this declares a pointer to an integer called "list" and allocates memory for an array of 3 integers using malloc. The size of the allocated memory is calculated as 3 times the size of an integer (sizeof(int)). This allows us to create a dynamic array that can hold 3 integer values, and we can access it using pointer arithmetic or array indexing (e.g., list[0], list[1], list[2]). Remember to free the allocated memory when we are done using it to avoid memory leaks.
+    list[0] = 1; //this assigns the value 1 to the first element of the dynamically allocated "list" array (index 0). This means that list[0] now holds the value 1, and we can access it using list[0] in our program.
+    list[1] = 2; //this assigns the value 2 to the second element of the dynamically allocated "list" array (index 1). This means that list[1] now holds the value 2, and we can access it using list[1] in our program.
+    list[2] = 3; //this assigns the value 3 to the third element of the dynamically allocated "list" array (index 2). This means that list[2] now holds the value 3, and we can access it using list[2] in our program.
+    for (int i = 0; i<3; i++) {
+        printf("%d\n", list[i]); //this prints the value of each element in the dynamically allocated "list" array to the console. The format specifier %d is used to indicate that each element should be printed as an integer. This allows us to see the values stored in the "list" array, which are 1, 2, and 3, each followed by a newline character. After we are done using the "list" array, we should remember to free the allocated memory using free(list) to avoid memory leaks.
+    }
+    //but what if we want to change the size of the array later? We can use realloc to resize the allocated memory for the "list" array. For example, if we want to resize it to hold 5 integers, we can do this:
+    list = realloc(list, 5 * sizeof(int)); //this resizes the allocated memory for the "list" array to hold 5 integers using realloc. The new size of the allocated memory is calculated as 5 times the size of an integer (sizeof(int)). This allows us to expand the "list" array to hold more integer values without losing the existing values. After resizing, we can assign values to the new elements in the array (e.g., list[3] = 4; list[4] = 5;) and access them as needed. Remember to free the allocated memory when we are done using it to avoid memory leaks.
+    for (int i = 0; i<sizeof(list)/sizeof(list[0]) ; i++) {
+        printf("%d\n", list[i]); //this prints the value of each element in the resized "list" array to the console. The format specifier %d is used to indicate that each element should be printed as an integer. This allows us to see the values stored in the "list" array, which are 1, 2, 3, and potentially uninitialized values for the new elements (list[3] and list[4]) if we have not assigned values to them yet. After we are done using the "list" array, we should remember to free the allocated memory using free(list) to avoid memory leaks.
+    }
+    free(list); //this frees the memory that was allocated for the "list" array using malloc. This is important to prevent memory leaks, which can occur when we allocate memory but do not free it after we are done using it. By calling free(list), we release the allocated memory back to the system, allowing it to be reused for other purposes and ensuring that our program does not consume more memory than necessary.
+    //======= MORE ON STRUCTS ========
+    {
+        typedef struct node {
+            int number; //this defines a struct called "node" that contains an integer field called "number". This struct can be used to represent a node in a linked list, where "number" can hold a value associated with the node. The struct can also contain a pointer to the next node in the list, allowing us to create a chain of nodes that form a linked list data structure.
+            struct node* next; //this defines a pointer to another struct of the same type (node) called "next". This allows us to create a linked list by having each node point to the next node in the list. The "next" pointer can be used to traverse the linked list, allowing us to access and manipulate the nodes in the list as needed. By using this structure, we can create dynamic data structures that can grow and shrink in size as we add or remove nodes from the linked list.
+        } node;
+        node *list = NULL;
+        for (int i = 0; i < 3; i++) {
+            node *n = malloc(sizeof(node)); //this allocates memory for a new node using malloc. The size of the allocated memory is calculated as the size of the "node" struct (sizeof(node)). This allows us to create a new node that can hold an integer value and a pointer to the next node in a linked list. After allocating memory for the new node, we should check if the allocation was successful before using it.
+            if (n == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1; //this returns 1 to indicate that the program ended with an error due to memory allocation failure. In C, returning a non-zero value from the main function typically indicates that the program encountered an error or did not execute successfully. By returning 1, we can signal to the operating system or any calling processes that the program did not complete as expected due to the memory allocation failure.
+            }
+            printf("What number? "); //this prompts the user to enter a number by printing "What number? " to the console. This allows us to get input from the user, which we can then store in the newly allocated node.
+            scanf("%d", &n->number); //this reads an integer input from the user and stores it in the "number" field of the newly allocated node "n". The format specifier %d is used to indicate that we are reading an integer, and the & operator is used to pass the address of n->number to scanf so that it can store the input value in that location. This allows us to populate the "number" field of the node with user input.
+            n->next = NULL; //this initializes the "next" pointer of the newly allocated node "n" to NULL. This indicates that this node is currently the last node in the linked list, as it does not point to any other node. When we add new nodes to the list, we will update this "next" pointer to point to the next node in the list, allowing us to create a chain of nodes that form a linked list.
+            n->next = list; //this sets the "next" pointer of the newly allocated node "n" to point to the current head of the list (which is stored in the variable "list"). This effectively inserts the new node at the beginning of the linked list, as it now points to the previous head of the list. After this line, we need to update the "list" variable to point to the new node "n", making it the new head of the list.
+            list = n; //this updates the "list" variable to point to the newly allocated node "n", making it the new head of the linked list. This means that the new node is now the first node in the list, and its "next" pointer points to the previous head of the list (which may be NULL if this is the first node). By repeating this process in a loop, we can build a linked list by inserting new nodes at the beginning of the list.
+        }
+        node* ptr = list; //this declares a pointer to a node called "ptr" and initializes it to point to the head of the linked list (which is stored in the variable "list"). This allows us to traverse the linked list starting from the head node, allowing us to access and manipulate each node in the list as needed.
+        while (ptr != NULL) {
+            printf("%d\n", ptr->number); //this prints the value of the "number" field of the current node pointed to by "ptr" to the console. The format specifier %d is used to indicate that the value should be printed as an integer. This allows us to see the values stored in each node of the linked list as we traverse it.
+            ptr = ptr->next; //this updates the "ptr" pointer to point to the next node in the linked list by assigning it the value of the "next" pointer of the current node. This allows us to move through the linked list one node at a time, allowing us to access and manipulate each node in the list as needed. The loop will continue until "ptr" becomes NULL, which indicates that we have reached the end of the linked list.
+        }
+        for (node* ptr = list; ptr != NULL; ptr = ptr->next) {
+            printf("%d\n", ptr->number); //this is a more concise way to traverse the linked list and print the value of the "number" field of each node. The for loop initializes a pointer "ptr" to the head of the list, checks if it is not NULL, and then updates it to point to the next node in each iteration. This allows us to access and manipulate each node in the linked list as needed while printing their values.
+        }
+        free(list); //this frees the memory allocated for the linked list starting from the head node pointed to by "list". However, this only frees the memory for the head node and does not free the memory for the subsequent nodes in the list. To properly free all nodes in the linked list, we would need to traverse the list and free each node individually before freeing the head node. For example:
+        node* current = list;
+        while (current != NULL) {
+            node* next = current->next; //store the pointer to the next node before freeing the current node
+            free(current); //free the current node
+            current = next; //move to the next nods in the list 
+
+        }
+    }
+    
     return 0; //returns 0 to indicate that the program ended successfully
 }
 double average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
