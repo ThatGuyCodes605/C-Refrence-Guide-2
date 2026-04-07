@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
-
+bool TreeSearch(node* tree, int number); //function prototype for the function "TreeSearch", which will be defined later in the code. This allows us to call the function "TreeSearch" from the main function before its actual definition, which can improve code organization and readability.
 int get_n(void); //function prototype for the function "get_n", which will be defined later in the code. This allows us to call the function "get_n" from the main function before its actual definition, which can improve code organization and readability.
 double average(int n, int scores[]); //function prototype for the function "average", which will be defined later in the code. This allows us to call the function "average" from the main function before its actual definition, which can improve code organization and readability.
 void meow(int n) {
@@ -717,16 +717,18 @@ int main(int argc, char* argv[]) {
         for (node* ptr = list; ptr != NULL; ptr = ptr->next) {
             printf("%d\n", ptr->number); //this is a more concise way to traverse the linked list and print the value of the "number" field of each node. The for loop initializes a pointer "ptr" to the head of the list, checks if it is not NULL, and then updates it to point to the next node in each iteration. This allows us to access and manipulate each node in the linked list as needed while printing their values.
         }
-        free(list); //this frees the memory allocated for the linked list starting from the head node pointed to by "list". However, this only frees the memory for the head node and does not free the memory for the subsequent nodes in the list. To properly free all nodes in the linked list, we would need to traverse the list and free each node individually before freeing the head node. For example:
-        node* current = list;
-        while (current != NULL) {
-            node* next = current->next; //store the pointer to the next node before freeing the current node
-            free(current); //free the current node
-            current = next; //move to the next nods in the list 
-
-        }
-    }
+   }
     
+    //======== TREES ========
+    {
+        typedef struct node {
+            int number; //this defines a struct called "node" that contains an integer field called "number". This struct can be used to represent a node in a binary tree, where "number" can hold a value associated with the node. The struct can also contain pointers to the left and right child nodes, allowing us to create a binary tree data structure.
+            struct node* left; //this defines a pointer to another struct of the same type (node) called "left". This allows us to create a binary tree by having each node point to its left child node. The "left" pointer can be used to traverse the left subtree of the binary tree, allowing us to access and manipulate the nodes in that subtree as needed.
+            struct node* right; //this defines a pointer to another struct of the same type (node) called "right". This allows us to create a binary tree by having each node point to its right child node. The "right" pointer can be used to traverse the right subtree of the binary tree, allowing us to access and manipulate the nodes in that subtree as needed. By using this structure, we can create dynamic data structures that can grow and shrink in size as we add or remove nodes from the binary tree.
+        } node;
+
+    }
+
     return 0; //returns 0 to indicate that the program ended successfully
 }
 double average(int n, int scores[]) { //this is a function declaration for a function called "average" that takes two parameters: an integer "n" representing the number of scores and an array of integers "scores" containing the scores. The function returns a float representing the average of the scores. The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it calculates the sum of the scores and then divides it by "n" to get the average, which is returned as a float.
@@ -777,4 +779,19 @@ void pointerswap(int *a, int *b) {
     int temp = *a; //this declares an integer variable called "temp" and initializes it with the value pointed to by "a". The * operator is used to dereference the pointer "a", which means it accesses the value stored at the memory address that "a" points to. This allows us to temporarily store the value of "a" before we overwrite it with the value of "b".
     *a = *b; //this assigns the value pointed to by "b" to the location pointed to by "a". The * operator is used to dereference both pointers, allowing us to access and modify the values stored at those memory addresses. This effectively assigns the value of "b" to "a", overwriting the original value of "a".
     *b = temp; //this assigns the value stored in the temporary variable "temp" (which holds the original value of "a") to the location pointed to by "b". The * operator is used to dereference the pointer "b", allowing us to access and modify the value stored at that memory address. This completes the swap by assigning the original value of "a" (stored in "temp") to "b".
+}
+bool TreeSearch(node* tree, int number)
+{
+    if (tree == NULL) {
+        return false; //this checks if the pointer "tree" is NULL, which would indicate that we have reached a leaf node in the binary tree without finding the target number. If this condition is true, it means that the number is not present in the tree, and we can return false to indicate that the search was unsuccessful.
+    }
+    if (number == tree->number) {
+        return true; //this checks if the value of "number" is equal to the "number" field of the current node pointed to by "tree". If this condition is true, it means that we have found the target number in the tree, and we can return true to indicate that the search was successful.
+    }
+    if (number < tree->number) {
+        return search(tree->left, number); //this checks if the value of "number" is less than the "number" field of the current node pointed to by "tree". If this condition is true, it means that if the target number exists in the tree, it must be located in the left subtree. Therefore, we make a recursive call to the search function with the left child of the current node (tree->left) as the new tree to search through.
+    }
+    else {
+        return search(tree->right, number); //this is executed if the value of "number" is greater than or equal to the "number" field of the current node pointed to by "tree". In this case, it means that if the target number exists in the tree, it must be located in the right subtree. Therefore, we make a recursive call to the search function with the right child of the current node (tree->right) as the new tree to search through.
+    }
 }

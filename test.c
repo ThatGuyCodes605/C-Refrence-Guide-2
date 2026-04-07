@@ -1,9 +1,30 @@
 #include <stdio.h>
-int swap(int *a, int *b) { //this is a function declaration for a function called "swap" that takes two parameters: pointers to integers "a" and "b". The function returns an integer, but in this case, it does not actually return any value (it should be declared as void instead). The function body is defined within the curly braces {} and contains the code that will be executed when the function is called. In this case, it swaps the values of the integers pointed to by "a" and "b" using a temporary variable "temp". This allows us to exchange the values of two integers in memory by passing their addresses to the function.
-    int temp = *a; //this declares an integer variable called "temp" and initializes it with the value pointed to by "a". The * operator is used to dereference the pointer "a", which means it accesses the value stored at the memory address that "a" points to. This allows us to temporarily store the value of "a" before we overwrite it with the value of "b".
-    *a = *b; //this assigns the value pointed to by "b" to the location pointed to by "a". The * operator is used to dereference both pointers, allowing us to access and modify the values stored at those memory addresses. This effectively assigns the value of "b" to "a", overwriting the original value of "a".
-    *b = temp; //this assigns the value stored in the temporary variable "temp" (which holds the original value of "a") to the location pointed to by "b". The * operator is used to dereference the pointer "b", allowing us to access and modify the value stored at that memory address. This completes the swap by assigning the original value of "a" (stored in "temp") to "b".
-}
+#include <stdlib.h>
 int main(void) {
-
+ typedef struct node {
+            int number; 
+            struct node* next; 
+        } node;
+        node *list = NULL;
+        for (int i = 0; i < 3; i++) {
+            node *n = malloc(sizeof(node));
+            if (n == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1;
+            }
+            printf("What number? "); 
+            scanf("%d", &n->number); 
+            n->next = NULL; 
+            n->next = list; 
+            list = n; 
+        }
+        node* ptr = list; 
+        while (ptr != NULL) {
+            printf("%d\n", ptr->number); 
+            ptr = ptr->next; 
+        }
+        for (node* ptr = list; ptr != NULL; ptr = ptr->next) {
+            printf("%d\n", ptr->number); 
+        }
+        node* current = list;
 }
